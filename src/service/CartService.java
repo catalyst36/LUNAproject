@@ -11,15 +11,17 @@ public class CartService {
 
 	CartDAO cartDao = new CartDAO();
 	
-	void cartView() throws IOException {
+	void cartView(int cartNumber) throws IOException {
+		
+		ArrayList<CartVO> list = cartDao.selectCart(cartNumber);
 		
 		System.out.println("---------------------------------------------------------");
-		System.out.println("[1. 구매      2. 상품삭제     3. 뒤로가기]");
+		System.out.println("[1. 구매      2. 상품삭제     other. 뒤로가기]");
 		System.out.print("[입력]");
 		int input = BufferUtil.nextInt();
 		while(true) {
 			if(input == 1) {
-				return; //카트 구입 메소드 호출
+				cartDao.paymentCartList(list);
 			}
 			else if(input ==2) {
 				System.out.println("삭제할 번호");
@@ -29,7 +31,6 @@ public class CartService {
 			}
 			else
 				return;
-				System.out.println("입력 오류!! 다시 입력해주세요.");
 		}
 	}
 	

@@ -17,8 +17,7 @@ public class CartDAO {
 
 	public ArrayList<CartVO> selectCart(int cartNumber) throws IOException {
 
-		ConnectDB db = new ConnectDB();
-		Connection conn = db.connectDB();
+		Connection conn = Connect.getConnection();
 		ResultSet rs = null;
 		Statement stmt = null;
 		ArrayList<CartVO> list = new ArrayList<>();
@@ -32,6 +31,8 @@ public class CartDAO {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 
+			System.out.println("  번호   주문번호    	 도서 이름 		도서코드   수량");
+			
 			while (rs.next()) {
 				CartVO cartVo = new CartVO();
 				String cart_no = rs.getString("cart_no");
@@ -49,9 +50,11 @@ public class CartDAO {
 				cartVo.setCart_qty(cart_qty);
 				
 				list.add(cartVo);
-
-				System.out.println("-----------------------------------------------------------");
-				System.out.printf("| %3d | %3s | %26s | %6s | %3d |", count,cart_no,book_name,cart_id,cart_qty);
+				
+				System.out.println("-------------------------------------------------------------");
+				System.out.printf("| %3d | %5s | %26s | %6s | %3d |\n", count,cart_no,book_name,cart_id,cart_qty);
+				
+				count++;
 			}
 
 		} catch (SQLException e) {
@@ -72,16 +75,15 @@ public class CartDAO {
 	}
 	
 	public void insertCart(String bookId, String memberId, int cart_qty, int cartNumber) {
-		ConnectDB db = new ConnectDB();
 		Connection conn = null;
 		PreparedStatement pstm = null;
 
 		try {
-			conn = db.connectDB();
+			conn = Connect.getConnection();
 			StringBuffer sql = new StringBuffer();
 
 			sql.append("insert into cart(cart_num, cart_no, cart_id, cart_mem, cart_qty, cart_date)");
-			sql.append("values(cart_seq.nextval" + cartNumber + ",?,?,?,sysdate)");
+			sql.append("values(cart_seq.nextval," + cartNumber + ",?,?,?,sysdate)");
 
 			pstm = conn.prepareStatement(sql.toString());
 
@@ -107,11 +109,10 @@ public class CartDAO {
 	}
 	
 	public void removeCart(int removeNum) throws IOException {
-		ConnectDB db = new ConnectDB();
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		try {
-			conn = db.connectDB();
+			conn = Connect.getConnection();
 			StringBuffer sql = new StringBuffer();
 
 			sql.append("delete from cart where cart_no = " + removeNum);
@@ -136,8 +137,8 @@ public class CartDAO {
 	}
 	
 	public static int getNewCartNumber() {
-		ConnectDB db = new ConnectDB();
-		Connection conn = db.connectDB();
+		
+		Connection conn = Connect.getConnection();
 		ResultSet rs = null;
 		Statement stmt = null;
 		int newCartNumber = 0;
@@ -170,6 +171,77 @@ public class CartDAO {
 			}
 		}
 		return newCartNumber + 1;
+	}
+	
+	public void paymentCartList(ArrayList<CartVO> list){
+		
+		Connection conn = Connect.getConnection();
+		ResultSet rs = null;
+		Statement stmt = null;
+		int totalPrice = 0;
+		int bookQty = 0;
+		int bookSale = 0;
+		int memberCash = 0;
+		
+		try {
+			stmt = conn.createStatement();
+			for(int i=0;i<list.size();i++) {
+				String sql = "select book_qty, book_sale"
+						+ " from book "
+						+ " where book_id = '" + list.get(i).getCart_id() + "'";
+	
+				rs = stmt.executeQuery(sql);
+				while(rs.next()) {
+					bookQty = rs.getInt("book_qty");
+					bookSale = rs.getInt("book_sale") * list.get(i).getCart_qty();
+				}
+				
+				bookQty -= list.get(i).getCart_qty();
+				totalPrice += bookSale;
+				
+				rs.close();
+				
+			}
+			
+			String sql = "select mem_cash from member where mem_id = '" + list.get(0).getCart_mem() + "'";
+			
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				memberCash = rs.getInt("mem_cash");
+			}
+			if(memberCash >= totalPrice) {
+				
+				for(int i=0;i<list.size();i++) {
+					sql = "update book"
+							+ " set book_qty = book_qty - " + list.get(i).getCart_qty()
+							+ " where book_id = '" + list.get(i).getCart_id() + "'";
+				}
+				
+				sql = "update member"
+					+ " set mem_cash = mem_cash - " + totalPrice
+					+ " where mem_id = '" + list.get(1).getCart_mem() + "'";
+				stmt.executeUpdate(sql);
+			}else {
+				return;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (stmt != null)
+					stmt.close();
+				if (conn != null)
+					conn.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 }

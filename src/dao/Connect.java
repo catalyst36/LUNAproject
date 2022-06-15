@@ -2,15 +2,17 @@ package dao;
 
 import java.sql.*;
 
-public class ConnectDB {
+public class Connect {
 
-	Connection conn = null;
-	
-	public Connection connectDB() {
+	public static Connection getConnection() {
+		
+		Connection conn = null;
+		
 		try{
+			
 			String driver = "oracle.jdbc.driver.OracleDriver";	
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";  
-			String user = "luna";
+			String user = "gaeddongi";
 			String password = "java";
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
