@@ -1,11 +1,10 @@
 package service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-import dao.CartDAO;
+import dao.login.LoginDAO;
+import dao.login.SignUp;
 import util.BufferUtil;
-import vo.CartVO;
 
 public class Main {
 
@@ -21,22 +20,27 @@ public class Main {
 
 			System.out.print("[입력] ");
 
-			int input = BufferUtil.nextInt();
-			
-			switch (input) {
+			int input = 0;
+
+			while (true) {
+				input = BufferUtil.nextInt();
+
+				switch (input) {
 				case 1: {
-					// 회원가입 클래스 호출
+					SignUp signup = new SignUp();
+					signup.insertMember();
 				}
 				case 2: {
-					// 로그인 클래스 호출
-					// 메인 메뉴 추가 ( 메인메뉴(메소드) , 1. 도서 구매, 2. 도서 환불, 3. 마이페이지 ) 
+					LoginDAO login = new LoginDAO();
+					login.memberLogin();
 				}
 				case 3: {
-					// 관리자 클래스 호출
-					// 도서 관리 ( 도서입고, 도서출고 )
+					Manager manager = new Manager();
+					manager.login();
 				}
 				default: {
 					System.exit(0);
+				}
 				}
 			}
 		}

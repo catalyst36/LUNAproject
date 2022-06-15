@@ -1,4 +1,4 @@
-package dao;
+package dao.manager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,9 +6,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import util.Connect;
+
 public class ManagerListDAO2 {
 
-	public static void main(String[] args) {
+	public void bookSelect() {
 		Scanner sc = new Scanner(System.in);
 
 		Connection conn = Connect.getConnection();

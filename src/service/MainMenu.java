@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import util.BufferUtil;
 
-public class Screen2 {
+public class MainMenu {
    
    public void screen2() {
       

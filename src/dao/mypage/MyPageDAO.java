@@ -1,4 +1,4 @@
-package dao;
+package dao.mypage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import util.BufferUtil;
-public class myPageDAO {
+import util.Connect;
+public class MyPageDAO {
 	
 //------------------------------ 회원정보확인
 	

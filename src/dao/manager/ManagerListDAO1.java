@@ -1,17 +1,17 @@
-package dao;
+package dao.manager;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import service.Manager;
+import util.Connect;
+
 public class ManagerListDAO1 {
 
 	
-	public static void main(String[] args){
+	public void selectMember(){
 		Scanner sc = new Scanner(System.in);
 		ResultSet rs = null;
 		Statement stmt = null;

@@ -1,4 +1,4 @@
-package dao;
+package dao.login;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import util.BufferUtil;
+import util.Connect;
 
 public class SignUp {
 

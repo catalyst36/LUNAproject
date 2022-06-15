@@ -1,18 +1,18 @@
-package dao;
+package dao.book;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Scanner;
+
+import service.Manager;
 
 public class BookStockDAO {
 
 	
-	public static void main(String[] args){
+	public void insertBook(){
 		Scanner sc = new Scanner(System.in);
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String id = "proj";

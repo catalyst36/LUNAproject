@@ -1,4 +1,4 @@
-package dao;
+package dao.login;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -6,10 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import service.Screen2;
+import service.MainMenu;
 import util.BufferUtil;
+import util.Connect;
 
-public class Login {
+public class LoginDAO {
 
 	
 	public void memberLogin () {
@@ -46,7 +47,7 @@ public class Login {
 				if(id.equals(mem_id)) {
 					if(pw.equals(mem_pw)) {
 						System.out.println("[로그인 성공]");
-						Screen2 sc2 = new Screen2();
+						MainMenu sc2 = new MainMenu();
 						sc2.screen2();
 					}else {
 						

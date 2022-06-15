@@ -1,4 +1,4 @@
-package dao;
+package dao.cart;
 
 import java.io.IOException;
 import java.sql.Connection;

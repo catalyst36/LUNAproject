@@ -1,9 +1,12 @@
-package dao;
+package service;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import service.Main;
+import dao.book.BookStockDAO;
+import dao.manager.ManagerListDAO1;
+import dao.manager.ManagerListDAO2;
+import dao.manager.ManagerListDAO3;
 
 public class Manager {
 	
@@ -73,12 +76,12 @@ public class Manager {
 	
 	public void bookStock(){  // 책 입고 메소드
 		BookStockDAO stock = new BookStockDAO();
-		stock.main(null);
+		stock.insertBook();
 	}
 	
 	public void memberList(){ // 회원 목록 조회 메소드
 		ManagerListDAO1 memList = new ManagerListDAO1();
-		memList.main(null);
+		memList.selectMember();
 	}
 	
 	public void bookList(){ // 도서 목록 조회 메소드
@@ -86,7 +89,7 @@ public class Manager {
 		Scanner sc = new Scanner(System.in);
 		ManagerListDAO2 bookList = new ManagerListDAO2();
 		
-		bookList.main(null);
+		bookList.bookSelect();
 		System.out.println("================d======================");
 		System.out.println("| 1. 품절 품목 추가 입고    |   2. 뒤로 가기                |");
 		System.out.println("======================================");
@@ -94,7 +97,7 @@ public class Manager {
 		
 		if (num == 1){
 			ManagerListDAO3 bookList2 = new ManagerListDAO3();
-			bookList2.main(null);
+			bookList2.checkStock();
 		}else{
 			manager.exe(); // 로그인 한 이후의 관리페이지로 이동
 		}

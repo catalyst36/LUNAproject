@@ -1,10 +1,10 @@
 package service;
 
-import dao.myPageDAO;
+import dao.mypage.MyPageDAO;
 import util.BufferUtil;
 
-public class pageScreen {
-	myPageDAO mp = new myPageDAO(); 
+public class PageScreen {
+	MyPageDAO mp = new MyPageDAO(); 
  public void pagescreen(){
 	 
 	 boolean b=true;

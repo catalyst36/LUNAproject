@@ -1,4 +1,4 @@
-package dao;
+package util;
 
 public class SEQ {
 
