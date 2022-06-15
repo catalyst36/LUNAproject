@@ -8,10 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import util.BufferUtil;
-import vo.BookVO;
+import util.Connect;
 import vo.CartVO;
-import vo.MemberVO;
 
 public class CartDAO {
 
