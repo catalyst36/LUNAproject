@@ -9,8 +9,7 @@ public class BookDAO {
 
 	public void selectBook() {
 		
-		ConnectDB db = new ConnectDB();
-		Connection conn = db.connectDB();
+		Connection conn = Connect.getConnection();
 		ResultSet rs = null;
 		Statement stmt = null;
 		try {

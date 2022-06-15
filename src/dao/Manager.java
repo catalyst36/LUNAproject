@@ -3,13 +3,9 @@ package dao;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Manager {
+import service.Main;
 
-	public static void main(String[] args) {
-		Manager manager = new Manager();
-		manager.login();  // 관리자 페이지 접속하자마자 로그인 메소드 호출
-		
-	}
+public class Manager {
 	
 	public void login(){ //  로그인 메소드
 		Scanner sc = new Scanner(System.in);
@@ -76,7 +72,7 @@ public class Manager {
 	}
 	
 	public void bookStock(){  // 책 입고 메소드
-		BookStockDAO2 stock = new BookStockDAO2();
+		BookStockDAO stock = new BookStockDAO();
 		stock.main(null);
 	}
 	
@@ -91,7 +87,7 @@ public class Manager {
 		ManagerListDAO2 bookList = new ManagerListDAO2();
 		
 		bookList.main(null);
-		System.out.println("======================================");
+		System.out.println("================d======================");
 		System.out.println("| 1. 품절 품목 추가 입고    |   2. 뒤로 가기                |");
 		System.out.println("======================================");
 		int num = sc.nextInt();
