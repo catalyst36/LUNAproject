@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import util.Connect;
+import util.SEQ;
 
 public class BookList {
 
@@ -23,7 +24,7 @@ public class BookList {
 			
 			while(rs.next()) {
 				
-				String book_id = rs.getString("BOOK_ID");
+				String book_id = SEQ.createSequenceKey(rs.getString("BOOK_ID"));
 				String book_name = rs.getString("BOOK_NAME");
 				int book_sale = rs.getInt("BOOK_SALE");
 				String book_author = rs.getString("BOOK_AUTHOR");

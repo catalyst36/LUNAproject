@@ -12,7 +12,7 @@ public class Connect {
 			
 			String driver = "oracle.jdbc.driver.OracleDriver";	
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";  
-			String user = "gaeddongi";
+			String user = "luna";
 			String password = "java";
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
