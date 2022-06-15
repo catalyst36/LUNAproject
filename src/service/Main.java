@@ -23,8 +23,7 @@ public class Main {
 			int input = 0;
 
 			while (true) {
-				input = BufferUtil.nextInt();
-
+				input = BufferUtil.nextInt();				System.out.println("수정중입니다.");
 				switch (input) {
 				case 1: {
 					SignUp signup = new SignUp();
