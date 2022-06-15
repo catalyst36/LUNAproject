@@ -1,11 +1,20 @@
 package vo;
 
 public class CartVO {
+	private int count = 1;
 	private String cart_no;
 	private int cart_qty;
 	private String cart_date;
 	private String cart_id;
 	private String cart_mem;
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 	public String getCart_no() {
 		return cart_no;
 	}
