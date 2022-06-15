@@ -1,7 +1,7 @@
 package service;
 
 import java.io.IOException;
-
+import dao.booklist.BookList;
 import util.BufferUtil;
 
 public class MainMenu {
@@ -26,9 +26,10 @@ public class MainMenu {
            switch (input) {
            
             case 1: {
-               System.out.println("도서목록 클래스 호출");
-               // 도서목록 클래스 호출
-               break;
+            	System.out.println("[전체 도서목록]");
+            	BookList bl = new BookList();
+            	bl.getWholeList();
+            	break;
             }
             case 2: {
                System.out.println("장바구니 클래스 호출");
