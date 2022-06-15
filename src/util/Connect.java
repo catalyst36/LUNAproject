@@ -11,7 +11,7 @@ public class Connect {
 		try{
 			
 			String driver = "oracle.jdbc.driver.OracleDriver";	
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";  
+			String url = "jdbc:oracle:thin:@192.168.143.28:1521:xe";  
 			String user = "luna";
 			String password = "java";
 			Class.forName(driver);
