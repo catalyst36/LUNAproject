@@ -4,15 +4,24 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import dao.book.BookStockDAO;
+import dao.login.ManagerLoginDAO;
 import dao.manager.ManagerListDAO1;
 import dao.manager.ManagerListDAO2;
 import dao.manager.ManagerListDAO3;
 
 public class Manager {
 	
+	public static void main(String[] args) {
+		Manager manager = new Manager();
+
+		manager.login();  // 관리자 페이지 접속하자마자 로그인 메소드 호출
+		
+	}
+	
 	public void login(){ //  로그인 메소드
 		Scanner sc = new Scanner(System.in);
 		Manager manager = new Manager();
+		ManagerLoginDAO managerLogin = new ManagerLoginDAO();
 		boolean run = false;
 		int index = 0;
 		
@@ -23,7 +32,8 @@ public class Manager {
 			System.out.print("PW : ");
 			String pw = sc.next();
 			
-			if (id.equals("luna") && pw.equals("java")){
+			managerLogin.ManagerLogin();
+			if (id.equals(managerLogin.getEmpID()) && pw.equals(managerLogin.getEmpPW())){
 					System.out.println("로그인에 성공하였습니다.");
 					System.out.println("|----------------------------------------------|");
 					System.out.println();

@@ -2,6 +2,7 @@ package service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import dao.booklist.BookList;
 import dao.cart.CartDAO;
 import util.BufferUtil;
@@ -13,9 +14,6 @@ public class BookListService {
 		
 		CartDAO cart = new CartDAO();
 		BookList booklist = new BookList();
-		
-		
-		
 		ArrayList<BookVO> list = booklist.getWholeList();
 		
 		System.out.println();
