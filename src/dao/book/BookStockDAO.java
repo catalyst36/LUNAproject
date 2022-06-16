@@ -1,21 +1,20 @@
 package dao.book;
 
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Scanner;
 
 import service.Manager;
+import util.BufferUtil;
 import util.Connect;
 
 public class BookStockDAO {
 
 	
-	public void insertBook(){
-		Scanner sc = new Scanner(System.in);
-
+	public void insertBook() throws Exception{
 		Connection conn = Connect.getConnection();
 		ResultSet rs = null;
 		PreparedStatement pstmt = null; // sql 동적 쿼리 명령 객체
@@ -29,21 +28,19 @@ public class BookStockDAO {
 			cstmt = conn.prepareCall(sb.toString());
 			
 			System.out.print("책 이름 입력 : ");
-			String bname = sc.nextLine();
+			String bname = BufferUtil.readLine();
 			System.out.print("책 가격 입력 : ");
-			int  bsale = sc.nextInt();
-			sc.nextLine();
+			int  bsale = BufferUtil.nextInt();
 			System.out.print("책 저자 입력 : ");
-			String  bauthor = sc.nextLine();
+			String  bauthor = BufferUtil.readLine();
 			System.out.print("책 출판사 입력 : ");
-			String  bpub = sc.nextLine();
+			String  bpub = BufferUtil.readLine();
 			System.out.print("책 수량 입력 : ");
-			int  bqty = sc.nextInt();
-			sc.nextLine();
+			int  bqty = BufferUtil.nextInt();
 			System.out.print("책 장르 입력 [소설,입문,에세이,경제경영,자기계발,예술 및 대중문화, 수험서, 여행] : ");
-			String  bgenre = sc.nextLine();
+			String  bgenre = BufferUtil.readLine();
 			System.out.print("책 줄거리 입력 : ");
-			String  bsummary = sc.nextLine();
+			String  bsummary = BufferUtil.readLine();
 
 			
 			cstmt.setString(1, bname);

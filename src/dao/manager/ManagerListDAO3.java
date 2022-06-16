@@ -1,21 +1,21 @@
 package dao.manager;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
 
 import service.Manager;
+import util.BufferUtil;
 import util.Connect;
 import util.SEQ;
 
 public class ManagerListDAO3 {
 
-	public void checkStock() {
+	public void checkStock() throws Exception {
 		Manager manager = new Manager();
 		SEQ seq = new SEQ();
-		Scanner sc = new Scanner(System.in);
 
 		Connection conn = Connect.getConnection();
 		
@@ -63,9 +63,9 @@ public class ManagerListDAO3 {
 				sql1.append("update book set  book_qty = ?  where book_id = ?");
 
 				System.out.print("책 코드 입력 [대소문자 구분] : ");
-				String bid = sc.nextLine();
+				String bid = BufferUtil.readLine();
 				System.out.print("입고할 수량 입력 : ");
-				int  bqty = sc.nextInt();
+				int  bqty = BufferUtil.nextInt();
 			
 				int bid_final = seq.returnSequenceKey(bid); // 입력받은 문자열을 숫자로 변환하여 bid_final에 저장
 				String bid_fin = Integer.toString(bid_final); // BOOK_ID 컬럼이 VARCHAR2이므로 bid_final을 문자열로 변환 

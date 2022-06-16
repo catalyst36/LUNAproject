@@ -1,18 +1,18 @@
 package dao.manager;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
 
 import service.Manager;
+import util.BufferUtil;
 import util.Connect;
 
 public class ManagerListDAO1 {
 
 	
-	public void selectMember(){
-		Scanner sc = new Scanner(System.in);
+	public void selectMember() throws Exception{
 		ResultSet rs = null;
 		Statement stmt = null;
 
@@ -47,7 +47,7 @@ public class ManagerListDAO1 {
 			System.out.println("---------------------------------------------------------------------------------");
 			System.out.println(" 1. 이름 순 |  2. 생일 순 |  3. 도서 구매 순 ");
 			System.out.println("---------------------------------------------------------------------------------");
-			int input = sc.nextInt();
+			int input = BufferUtil.nextInt();
 			
 			switch(input){
 			case 1: 
