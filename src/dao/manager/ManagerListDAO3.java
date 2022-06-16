@@ -62,7 +62,7 @@ public class ManagerListDAO3 {
 			
 				sql1.append("update book set  book_qty = ?  where book_id = ?");
 
-				System.out.print("책 코드 입력 : ");
+				System.out.print("책 코드 입력 [대소문자 구분] : ");
 				String bid = sc.nextLine();
 				System.out.print("입고할 수량 입력 : ");
 				int  bqty = sc.nextInt();

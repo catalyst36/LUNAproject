@@ -35,16 +35,18 @@ public class BookStockDAO {
 			String bname = sc.nextLine();
 			System.out.print("책 가격 입력 : ");
 			int  bsale = sc.nextInt();
+			sc.nextLine();
 			System.out.print("책 저자 입력 : ");
-			String  bauthor = sc.next();
+			String  bauthor = sc.nextLine();
 			System.out.print("책 출판사 입력 : ");
-			String  bpub = sc.next();
+			String  bpub = sc.nextLine();
 			System.out.print("책 수량 입력 : ");
 			int  bqty = sc.nextInt();
-			System.out.print("책 장르 입력 : ");
-			String  bgenre = sc.next();
+			sc.nextLine();
+			System.out.print("책 장르 입력 [소설,입문,에세이,경제경영,자기계발,예술 및 대중문화, 수험서, 여행] : ");
+			String  bgenre = sc.nextLine();
 			System.out.print("책 줄거리 입력 : ");
-			String  bsummary = sc.next();
+			String  bsummary = sc.nextLine();
 
 			
 			cstmt.setString(1, bname);
