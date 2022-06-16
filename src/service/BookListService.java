@@ -16,12 +16,23 @@ public class BookListService {
 		BookList booklist = new BookList();
 		ArrayList<BookVO> list = booklist.getWholeList();
 		
+		System.out.println();
 		while(true) {
-			System.out.print("장바구니에 추가할 도서 번호 : ");
+			System.out.println("1.도서선택   2.검색   3.돌아가기");
+			System.out.println("[입력] ");
 			int input = BufferUtil.nextInt();
-			System.out.println("구매 수량 : ");
-			int qty = BufferUtil.nextInt();
-			cart.insertCart(list.get(input).getBook_id(), mem_id, qty, cartNumber);
+			
+			switch(input) {
+			case 1:
+				//도서선택 메소드
+				break;
+			case 2:
+				//검색 메소드
+			case 3:
+				return;
+			default:
+				break;
+			}
 		}
 	}
 }
