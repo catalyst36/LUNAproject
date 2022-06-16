@@ -1,18 +1,18 @@
 package dao.manager;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Scanner;
 
 import service.Manager;
+import util.BufferUtil;
 import util.Connect;
 
 public class ManagerListDAO1 {
 
 	
-	public void selectMember(){
-		Scanner sc = new Scanner(System.in);
+	public void selectMember() throws Exception{
 		ResultSet rs = null;
 		Statement stmt = null;
 
@@ -47,7 +47,7 @@ public class ManagerListDAO1 {
 			System.out.println("---------------------------------------------------------------------------------");
 			System.out.println(" 1. 이름 순 |  2. 생일 순 |  3. 도서 구매 순 ");
 			System.out.println("---------------------------------------------------------------------------------");
-			int input = sc.nextInt();
+			int input = BufferUtil.nextInt();
 			
 			switch(input){
 			case 1: 
@@ -76,10 +76,11 @@ public class ManagerListDAO1 {
 				String mem_ph = rs.getString("mem_ph");
 				String mem_cash = rs.getString("mem_cash");
 				String mem_grade = rs.getString("mem_grade");
+				String mem_qty = rs.getString("nvl(sum(c.cart_qty),0)");
 
 				System.out.println(mem_id + "\t\t" + mem_pw + "\t\t" + mem_name + "\t\t" + mem_add1 + "\t\t"
 					+ mem_add2 + "\t\t" + mem_email + "\t\t" + mem_bir + "\t\t" + mem_mileage + "\t\t" + mem_ph
-					+ "\t\t" + mem_cash + "\t\t" + mem_grade);
+					+ "\t\t" + mem_cash + "\t\t" + mem_grade + "\t\t" + mem_qty);
 			}
 			
 		} catch (Exception e) {

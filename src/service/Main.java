@@ -8,7 +8,7 @@ import util.BufferUtil;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 
 		System.out.println("\t\t\t\t[루나문고]");
 		while (true) {
