@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import dao.cart.CartDAO;
 import service.MainMenu;
 import util.BufferUtil;
 import util.Connect;
@@ -48,7 +49,9 @@ public class LoginDAO {
 					if(pw.equals(mem_pw)) {
 						System.out.println("[로그인 성공]");
 						MainMenu sc2 = new MainMenu();
-						sc2.screen2();
+						CartDAO cart = new CartDAO();
+						int cartNumber = cart.getNewCartNumber();
+						sc2.screen2(cartNumber);
 					}else {
 						
 						boolean run = true;

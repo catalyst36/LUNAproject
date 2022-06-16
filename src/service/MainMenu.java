@@ -1,12 +1,15 @@
 package service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import dao.booklist.BookList;
 import util.BufferUtil;
+import vo.BookVO;
 
 public class MainMenu {
    
-   public void screen2() {
+   public void screen2(int cartNumber) {
       
       boolean run = true;
       
@@ -27,13 +30,13 @@ public class MainMenu {
            
             case 1: {
             	System.out.println("[전체 도서목록]");
-            	BookList bl = new BookList();
-            	bl.getWholeList();
+            	BookListService bookservice = new BookListService();
+            	bookservice.viewBookList();
             	break;
             }
             case 2: {
-               System.out.println("장바구니 클래스 호출");
-               // 장바구니 클래스 호출
+               CartService cart = new CartService();
+               cart.cartView(cartNumber);
                break;
             }
             case 3: {
