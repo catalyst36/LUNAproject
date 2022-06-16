@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import util.Connect;
+import util.SEQ;
 
 public class ManagerListDAO2 {
 
@@ -30,7 +31,7 @@ public class ManagerListDAO2 {
 			System.out.println("책코드\t\t책 이름\t\t판매가\t\t책 저자\t\t출판사\t\t책 수량\t\t장르\t\t판매수량");
 			System.out.println("====================================================================");
 			while(rs.next()){
-				String book_id = rs.getString("book_id");
+				String book_id = SEQ.createSequenceKey(rs.getString("book_id"));
 				String book_name = rs.getString("book_name");
 				String book_sale = rs.getString("book_sale");
 				String book_author = rs.getString("book_author");
