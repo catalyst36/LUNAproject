@@ -28,14 +28,17 @@ public class Main {
 				case 1: {
 					SignUp signup = new SignUp();
 					signup.insertMember();
+					break;
 				}
 				case 2: {
 					LoginDAO login = new LoginDAO();
 					login.memberLogin();
+					break;
 				}
 				case 3: {
 					Manager manager = new Manager();
 					manager.login();
+					break;
 				}
 				default: {
 					System.exit(0);

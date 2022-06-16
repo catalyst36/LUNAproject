@@ -154,7 +154,7 @@ public class LoginDAO {
 			
 			switch(select) {
 			case 1:
-				//랜덤 비밀번호 부여 mem_id 쓸거임
+				createRandomPw(mem_id);
 				run = false;
 			case 2:
 				System.out.println("[메인 메뉴로 돌아갑니다]");
@@ -184,17 +184,23 @@ public class LoginDAO {
 			randomPw += strSet[idx];
 		}
 		
-		System.out.println("[임시 비밀번호 : "+randomPw+"]");
-		System.out.println("[마이 페이지에서 꼭! 변경해야됩니다]");
-		
 		Connection con = null;
 		Statement stmt = null;
+		int rs;
+		
+		con = Connect.getConnection();
 		stmt = con.createStatement();
 		
-		String sql = "UPDATE MEMBER SET MEM_PW = "+randomPw+
-					 " WHERE MEM_ID = "+mem_id;
+		String sql = "UPDATE MEMBER SET MEM_PW = "+"'"+randomPw+"'"+
+					 " WHERE MEM_ID = "+"'"+mem_id+"'";
 		
-		// 미완성 
+		rs = stmt.executeUpdate(sql);
+		
+		if(rs !=0 ) {
+		System.out.println("[임시 비빌번호가 생성되었습니다]");
+		System.out.println("[임시 비밀번호 : "+randomPw+"]");
+		System.out.println("[마이 페이지에서 꼭! 변경해야됩니다]");
+		}
 	}
 	
 }
