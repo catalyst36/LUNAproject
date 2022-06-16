@@ -1,13 +1,14 @@
 package service;
 
 import java.io.IOException;
+
 import dao.book.BookStockDAO;
 import dao.login.ManagerLoginDAO;
 import dao.manager.ManagerListDAO1;
 import dao.manager.ManagerListDAO2;
 import dao.manager.ManagerListDAO3;
-import vo.EmployeeVO;
 import util.BufferUtil;
+import vo.EmployeeVO;
 
 public class Manager {
 	

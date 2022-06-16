@@ -1,5 +1,9 @@
 package util;
 
+import java.util.ArrayList;
+
+import vo.BookVO;
+
 public class SEQ {
 
 		public static String createSequenceKey(String bookID){
@@ -17,6 +21,15 @@ public class SEQ {
 			int r = 0;
 			char id = bookID.charAt(0); // BOOK_ID의 문자 부분(A,B,C)를 따와 id 변수에 저장
 			String intStr = bookID.replaceAll("[^0-9]", ""); // BOOK_ID의 숫자 부분을 intStr 문자열에 저장
+			int num = Integer.parseInt(intStr); // intStr 문자열을 숫자형으로 타입 변환
+			r = (int) id * 10000 + num; 
+					return r;
+		}
+		
+		public static int returnSequenceKeyList(BookVO bookID){
+			int r = 0;
+			char id = bookID.getBook_id().charAt(0); // BOOK_ID의 문자 부분(A,B,C)를 따와 id 변수에 저장
+			String intStr = bookID.getBook_id().replaceAll("[^0-9]", ""); // BOOK_ID의 숫자 부분을 intStr 문자열에 저장
 			int num = Integer.parseInt(intStr); // intStr 문자열을 숫자형으로 타입 변환
 			r = (int) id * 10000 + num; 
 					return r;
