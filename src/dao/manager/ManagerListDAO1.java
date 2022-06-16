@@ -24,19 +24,19 @@ public class ManagerListDAO1 {
 
 			String sql = "select m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
 					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,"
-					+ "m.mem_grade, sum(c.cart_qty) from member m, cart c where mem_id = cart_mem "
+					+ "m.mem_grade, nvl(sum(c.cart_qty),0)  from member m, cart c where mem_id = cart_mem  (+)"
 					+ "group by m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
 					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,m.mem_grade "
 					+ "order by m.mem_name";
 			String sql1 ="select m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
 					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,"
-					+ "m.mem_grade, sum(c.cart_qty) from member m, cart c where mem_id = cart_mem "
+					+ "m.mem_grade, nvl(sum(c.cart_qty),0)  from member m, cart c where mem_id = cart_mem (+) "
 					+ "group by m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
 					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,m.mem_grade "
 					+ "order by m.mem_bir";
 			String sql2 = "select m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
 					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,"
-					+ "m.mem_grade, sum(c.cart_qty) from member m, cart c where mem_id = cart_mem "
+					+ "m.mem_grade, nvl(sum(c.cart_qty),0)  from member m, cart c where mem_id = cart_mem (+) "
 					+ "group by m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
 					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,m.mem_grade "
 					+ "order by sum(c.cart_qty)";
