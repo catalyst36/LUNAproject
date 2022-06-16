@@ -51,7 +51,7 @@ public class LoginDAO {
 						MainMenu sc2 = new MainMenu();
 						CartDAO cart = new CartDAO();
 						int cartNumber = cart.getNewCartNumber();
-						sc2.screen2(cartNumber);
+						sc2.screen2(cartNumber, mem_id);
 					}else {
 						
 						boolean run = true;

@@ -41,7 +41,7 @@ public class BookList {
 				String book_genre = rs.getString("BOOK_GENRE");
 				int book_qtysale = rs.getInt("BOOK_QTYSALE");
 				
-				System.out.println("[번호]" + count +"[코드] "+book_id+" [제목] "+book_name+" [가격] "+book_sale+" [저자] "+book_author+
+				System.out.println("[번호] " + count +"[코드] "+book_id+" [제목] "+book_name+" [가격] "+book_sale+" [저자] "+book_author+
 						" [출판사] "+book_pub+" [수량] "+book_qty+" [장르] "+book_genre+" [누적 판매수] "+book_qtysale);
 				
 				book.setBook_id(book_id);

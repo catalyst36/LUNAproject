@@ -9,7 +9,7 @@ import vo.BookVO;
 
 public class MainMenu {
    
-   public void screen2(int cartNumber) {
+   public void screen2(int cartNumber, String mem_id) {
       
       boolean run = true;
       
@@ -31,7 +31,7 @@ public class MainMenu {
             case 1: {
             	System.out.println("[전체 도서목록]");
             	BookListService bookservice = new BookListService();
-            	bookservice.viewBookList();
+            	bookservice.viewBookList(cartNumber, mem_id);
             	break;
             }
             case 2: {
