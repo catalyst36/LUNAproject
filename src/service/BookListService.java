@@ -64,7 +64,7 @@ public class BookListService {
 			int cart_qty = BufferUtil.nextInt();
 			for(int i = 0; i<list.size(); i++) {
 				if(book_num == list.get(i).getBook_num()) {
-					String bookId = SEQ.returnSequenceKey(list.get(i).getBook_id());
+					String bookId = list.get(i).getBook_id();
 					CartDAO cd = new CartDAO();
 					cd.insertCart(bookId, mem_id, cart_qty, cartNumber);
 				}
