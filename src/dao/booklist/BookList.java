@@ -12,12 +12,13 @@ import vo.BookVO;
 
 public class BookList {
 
+	ArrayList<BookVO> list = new ArrayList<>();
+	
 	public ArrayList<BookVO> getWholeList() {
 		
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		ArrayList<BookVO> list = new ArrayList<>();
 		
 		try {
 			con = Connect.getConnection();
