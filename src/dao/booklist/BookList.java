@@ -1,73 +1,105 @@
 package dao.booklist;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
-import util.Connect;
-import util.SEQ;
+import util.BufferUtil;
 import vo.BookVO;
 
 public class BookList {
 
-	public ArrayList<BookVO> getWholeList() {
+	public void getWholeBookList(ArrayList<BookVO> list) {
 		
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		ArrayList<BookVO> list = new ArrayList<>();
-		
-		try {
-			con = Connect.getConnection();
-			stmt = con.createStatement();
+		for(int i = 0; i<list.size(); i++) {
+			StringBuilder res = new StringBuilder();
 			
-			String wholeList = "SELECT * FROM BOOK";
-			rs = stmt.executeQuery(wholeList);
-			int count = 0;
-			
-			while(rs.next()) {
-				
-				BookVO book = new BookVO();
-				
-				String book_id = SEQ.createSequenceKey(rs.getString("BOOK_ID"));
-				String book_name = rs.getString("BOOK_NAME");
-				int book_sale = rs.getInt("BOOK_SALE");
-				String book_author = rs.getString("BOOK_AUTHOR");
-				String book_pub = rs.getString("BOOK_PUB");
-				int book_qty = rs.getInt("BOOK_QTY");
-				String book_genre = rs.getString("BOOK_GENRE");
-				int book_qtysale = rs.getInt("BOOK_QTYSALE");
-				
-				System.out.println("[번호] " + count +"[코드] "+book_id+" [제목] "+book_name+" [가격] "+book_sale+" [저자] "+book_author+
-						" [출판사] "+book_pub+" [수량] "+book_qty+" [장르] "+book_genre+" [누적 판매수] "+book_qtysale);
-				
-				book.setBook_id(book_id);
-				book.setBook_name(book_name);
-				book.setBook_sale(book_sale);
-				book.setBook_author(book_author);
-				book.setBook_pub(book_pub);
-				book.setBook_qty(book_qty);
-				book.setBook_genre(book_genre);
-				book.setBook_qtysale(book_qtysale);
-				
-				list.add(book);
-				count++;
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-			System.out.println("[SQL FAILURE]");
-		}finally {
-			try {
-			if(con != null) con.close();
-			if(stmt != null) stmt.close();
-			if(rs != null) rs.close();
-			}catch(Exception e) {
-				e.printStackTrace();
-				System.out.println("[MEMORY RECOVERY FAILURE");
+			res.append("[번호] " + list.get(i).getBook_num());
+			res.append(" [코드] " + list.get(i).getBook_id());
+			res.append(" [제목] " + list.get(i).getBook_name());
+			res.append(" [가격] " + list.get(i).getBook_sale());
+			res.append(" [저자] " + list.get(i).getBook_author());
+			res.append(" [출판사] " + list.get(i).getBook_pub());
+			res.append(" [수량] " + list.get(i).getBook_qty());
+			res.append(" [장르] " + list.get(i).getBook_genre());
+			res.append(" [누적 판매수] " + list.get(i).getBook_qtysale());
+			System.out.println(res.toString());
+		}
+	}
+	
+	public void searchBookName(ArrayList<BookVO> list) throws IOException{
+		System.out.println("[도서 제목을 입력하세요]");
+		System.out.print("<입력> : ");
+		String book_name = BufferUtil.readLine();
+		int missNameCount = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(book_name.equals(list.get(i).getBook_name())) {
+				StringBuilder res = new StringBuilder();
+				res.append("[번호] " + list.get(i).getBook_num());
+				res.append(" [코드] " + list.get(i).getBook_id());
+				res.append(" [제목] " + list.get(i).getBook_name());
+				res.append(" [가격] " + list.get(i).getBook_sale());
+				res.append(" [저자] " + list.get(i).getBook_author());
+				res.append(" [출판사] " + list.get(i).getBook_pub());
+				res.append(" [수량] " + list.get(i).getBook_qty());
+				res.append(" [장르] " + list.get(i).getBook_genre());
+				res.append(" [누적 판매수] " + list.get(i).getBook_qtysale());
+				System.out.println(res.toString());
+			}else {
+				missNameCount++;
 			}
 		}
-		return list;
+		if(missNameCount==list.size()) System.out.println("[찾으시는 도서가 없습니다]");
 	}
+	
+	public void searchBookGenre(ArrayList<BookVO> list) throws IOException{
+		System.out.println("[장르를 입력하세요]");
+		System.out.print("<입력> : ");
+		String book_genre = BufferUtil.readLine();
+		int missGenreCount = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(book_genre.equals(list.get(i).getBook_genre())) {
+				StringBuilder res = new StringBuilder();
+				res.append("[번호] " + list.get(i).getBook_num());
+				res.append(" [코드] " + list.get(i).getBook_id());
+				res.append(" [제목] " + list.get(i).getBook_name());
+				res.append(" [가격] " + list.get(i).getBook_sale());
+				res.append(" [저자] " + list.get(i).getBook_author());
+				res.append(" [출판사] " + list.get(i).getBook_pub());
+				res.append(" [수량] " + list.get(i).getBook_qty());
+				res.append(" [장르] " + list.get(i).getBook_genre());
+				res.append(" [누적 판매수] " + list.get(i).getBook_qtysale());
+				System.out.println(res.toString());
+			}else {
+				missGenreCount++;
+			}
+		}
+		if(missGenreCount==list.size()) System.out.println("[찾으시는 도서가 없습니다]");
+	}
+	
+	public void searchBookAuthor(ArrayList<BookVO> list) throws IOException{
+		System.out.println("[저자를 입력하세요]");
+		System.out.print("<입력> : ");
+		String book_author = BufferUtil.readLine();
+		int missAuthorCount = 0;
+		for(int i = 0; i<list.size(); i++) {
+			if(book_author.equals(list.get(i).getBook_author())) {
+				StringBuilder res = new StringBuilder();
+				res.append("[번호] " + list.get(i).getBook_num());
+				res.append(" [코드] " + list.get(i).getBook_id());
+				res.append(" [제목] " + list.get(i).getBook_name());
+				res.append(" [가격] " + list.get(i).getBook_sale());
+				res.append(" [저자] " + list.get(i).getBook_author());
+				res.append(" [출판사] " + list.get(i).getBook_pub());
+				res.append(" [수량] " + list.get(i).getBook_qty());
+				res.append(" [장르] " + list.get(i).getBook_genre());
+				res.append(" [누적 판매수] " + list.get(i).getBook_qtysale());
+				System.out.println(res.toString());
+			}else {
+				missAuthorCount++;
+			}
+		}
+		if(missAuthorCount==list.size()) System.out.println("[찾으시는 도서가 없습니다]");
+	}
+	
 }

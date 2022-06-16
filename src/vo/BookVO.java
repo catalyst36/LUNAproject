@@ -1,6 +1,7 @@
 package vo;
 
 public class BookVO {
+	private int book_num;
 	private String book_id;
 	private String book_name;
 	private int book_sale;
@@ -14,6 +15,12 @@ public class BookVO {
 	private int book_qtysale;
 	
 	
+	public int getBook_num() {
+		return book_num;
+	}
+	public void setBook_num(int book_num) {
+		this.book_num = book_num;
+	}
 	public String getBook_id() {
 		return book_id;
 	}
