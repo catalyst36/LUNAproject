@@ -8,23 +8,20 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 import service.Manager;
+import util.Connect;
 
 public class BookStockDAO {
 
 	
 	public void insertBook(){
 		Scanner sc = new Scanner(System.in);
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String id = "proj";
-		String pass = "java";
+
+		Connection conn = Connect.getConnection();
 		ResultSet rs = null;
 		PreparedStatement pstmt = null; // sql 동적 쿼리 명령 객체
-		Connection conn = null;
 		CallableStatement cstmt = null;
 		
 		try {	
-			Class.forName("oracle.jdbc.OracleDriver");
-			conn = DriverManager.getConnection(url, id, pass);
 			StringBuilder sb = new StringBuilder();
 			
 			sb.append(" { call book_stock(?,?,?,?,?,?,?) } ");
