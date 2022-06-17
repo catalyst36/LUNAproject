@@ -15,13 +15,14 @@ public class MainMenu {
       try {
          
          while(run) {
-        System.out.println(" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ ");
-           System.out.println("|\t\t\t\t\t\t\t\t\t|");
-           System.out.println("|\t 1.도서목록 \t 2.장바구니 \t 3.마이페이지 \t 4.로그아웃     \t|");
-           System.out.println("|\t\t\t\t\t\t\t\t\t|");
-           System.out.println(" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ ");
+        	 
+             System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+             System.out.printf("│%-97s│\n","");
+             System.out.printf("│%20s %18s %18s %18s %14s\n","1.도서목록","2.장바구니","3.마이페이지","4.로그아웃","│");
+             System.out.printf("│%-97s│\n","");
+             System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 
-           System.out.print("[입력] ");
+             System.out.printf("%55s","원하시는 메뉴번호를 입력하세요 ☞ ");
 
            int input = BufferUtil.nextInt();
            
@@ -40,13 +41,12 @@ public class MainMenu {
                break;
             }
             case 3: {
-               System.out.println("마이페이지 클래스 호출");
-               // 마이페이지 클래스 호출
+               PageScreen page = new PageScreen();
+               page.pagescreen();
                break;
             }
             case 4: {
-               run = false;
-               break;
+            	return;
             }
            }
          }

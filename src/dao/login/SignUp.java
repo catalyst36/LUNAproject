@@ -24,13 +24,15 @@ public void insertMember(){
 			pstmt = con.prepareStatement(sql.toString());
 			
 			
-			System.out.println("\n\n\n\n\n\n\n\n\n\n");
-	        System.out.println(" ┌───────────────────────────────────────────────────────────────────┐");
-	        System.out.println(" │\t\t\t\t\t\t\t\t\t│");
-	        System.out.println(" │\t\t             회원가입을 진행합니다.               \t\t│");
-	        System.out.println(" │\t\t           아래의 가입정보를 기입하세요.                \t│");
-	        System.out.println(" │\t\t\t\t\t\t\t\t\t│");
-	        System.out.println(" └───────────────────────────────────────────────────────────────────┘");
+			System.out.println("\n\n\n\n\n\n\n");
+			
+            System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+           System.out.printf("│%-97s│\n","");
+           System.out.printf("│%50s %43s│\n"," 회원 가입을 진행합니다.","");
+           System.out.printf("│%53s %39s│\n","아래에 정보를 기입해 주세요.","");
+           System.out.printf("│%-97s│\n","");
+           System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+
 	        System.out.print("\t\t\t       [아이디] ☞  ");
 			String mem_id = BufferUtil.readLine();
 			System.out.println();
@@ -74,8 +76,21 @@ public void insertMember(){
 			int rs;
 			rs = pstmt.executeUpdate();
 			
-			if(rs != 0 ) System.out.println("[회원가입 성공]");
-			else System.out.println("[회원가입 실패]");
+			if(rs != 0 ) {
+	            System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	            System.out.printf("│%-97s│\n","");
+				System.out.printf("│%45s %40s │","회원가입 성공","");
+		        System.out.printf("│%-97s│\n","");
+		        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+
+			}
+			else {
+	            System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	            System.out.printf("│%-97s│\n","");
+	            System.out.println("[회원가입 실패]");
+		        System.out.printf("│%-97s│\n","");
+		        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+			}
 		
 		}catch(SQLException e) {
 			e.printStackTrace();

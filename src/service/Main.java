@@ -10,40 +10,40 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 
-		System.out.println("\t\t\t\t[루나문고]");
 		while (true) {
-			System.out.println(" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ ");
-			System.out.println("|\t\t\t\t\t\t\t\t\t|");
-			System.out.println("|\t 1.회원가입 \t 2.로그인 \t 3.관리자 \t 4.종료     \t|");
-			System.out.println("|\t\t\t\t\t\t\t\t\t|");
-			System.out.println(" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ ");
+			
+           System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+           System.out.printf("│%-97s│\n","");
+           System.out.printf("│%20s %18s %18s %18s %16s\n","1.회원가입","2.로그인","3.관리자","4.종료","│");
+           System.out.printf("│%-97s│\n","");
+           System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 
-			System.out.print("[입력] >> ");
+		
+
+           System.out.printf("%55s","원하시는 메뉴번호를 입력하세요 ☞ ");
 
 			int input = 0;
 
-			while (true) {
-				input = BufferUtil.nextInt();
-				switch (input) {
-				case 1: {
-					SignUp signup = new SignUp();
-					signup.insertMember();
-					break;
-				}
-				case 2: {
-					LoginDAO login = new LoginDAO();
-					login.memberLogin();
-					break;
-				}
-				case 3: {
-					Manager manager = new Manager();
-					manager.login();
-					break;
-				}
-				default: {
-					System.exit(0);
-				}
-				}
+			input = BufferUtil.nextInt();
+			switch (input) {
+			case 1: {
+				SignUp signup = new SignUp();
+				signup.insertMember();
+				break;
+			}
+			case 2: {
+				LoginDAO login = new LoginDAO();
+				login.memberLogin();
+				break;
+			}
+			case 3: {
+				Manager manager = new Manager();
+				manager.login();
+				break;
+			}
+			default: {
+				System.exit(0);
+			}
 			}
 		}
 	}

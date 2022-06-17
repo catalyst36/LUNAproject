@@ -52,6 +52,7 @@ public class LoginDAO {
 						CartDAO cart = new CartDAO();
 						int cartNumber = cart.getNewCartNumber();
 						sc2.screen2(cartNumber, mem_id);
+						return;
 					}else {
 						
 						boolean run = true;

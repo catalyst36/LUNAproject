@@ -111,17 +111,16 @@ public class CartDAO {
 			conn = Connect.getConnection();
 			StringBuffer sql = new StringBuffer();
 
-			sql.append("DELETE FROM CART"
-					+ " WHERE cart_num = (SELECT CART_NUM"
-					+ " FROM (SELECT ROWNUM NUM, C.* FROM CART C) A"
-					+ " WHERE A.NUM = ?"
-					+ " and cart_mem = ?"
-					+ " and cart_state = '0')");
+			sql.append("DELETE FROM CART" 
+					 + " WHERE CART_NUM = (SELECT cart_num FROM (SELECT ROWNUM NUM, C.* FROM CART C"
+					 + " where CART_MEM = ?"
+					 + " AND CART_STATE = '0')A"
+					 + " WHERE A.NUM = ?)");
 			pstm = conn.prepareStatement(sql.toString());
 			
-			pstm.setInt(1, removeNum);
-			pstm.setString(2, mem_id);
-
+			pstm.setString(1, mem_id);
+			pstm.setInt(2, removeNum);
+			
 			int res = pstm.executeUpdate();
 			
 			if(res == 0) {
@@ -204,6 +203,8 @@ public class CartDAO {
 
 			}
 
+			System.out.println("총 구매 가격 : " + totalPrice);
+			
 			String sql = "select mem_cash from member where mem_id = '" + list.get(0).getCart_mem() + "'";
 
 			rs = stmt.executeQuery(sql);
@@ -214,8 +215,8 @@ public class CartDAO {
 			if (memberCash >= totalPrice) {
 
 				for (int i = 0; i < list.size(); i++) {
-					sql = "update book" + " set book_qty = book_qty - " + list.get(i).getCart_qty()
-							+ " where book_id = '" + list.get(i).getCart_id() + "'";
+					sql = "UPDATE BOOK SET  BOOK_QTY = BOOK_QTY - " + list.get(i).getCart_qty() +" , BOOK_QTYSALE = BOOK_QTYSALE + " 
+						 + list.get(i).getCart_qty() + " WHERE BOOK_ID = '"+list.get(i).getCart_id()+"'";
 					stmt.executeUpdate(sql);
 				}
 
@@ -229,6 +230,7 @@ public class CartDAO {
 						+ "and cart_state = '0'";
 				stmt.executeUpdate(sql);
 			} else {
+				System.out.println("구매 실패! 잔고가 부족합니다.");
 				return;
 			}
 
