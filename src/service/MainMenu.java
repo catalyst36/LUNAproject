@@ -40,8 +40,8 @@ public class MainMenu {
                break;
             }
             case 3: {
-               System.out.println("마이페이지 클래스 호출");
-               // 마이페이지 클래스 호출
+               PageScreen page = new PageScreen();
+               page.pagescreen();
                break;
             }
             case 4: {
