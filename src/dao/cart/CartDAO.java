@@ -111,17 +111,16 @@ public class CartDAO {
 			conn = Connect.getConnection();
 			StringBuffer sql = new StringBuffer();
 
-			sql.append("DELETE FROM CART"
-					+ " WHERE cart_num = (SELECT CART_NUM"
-					+ " FROM (SELECT ROWNUM NUM, C.* FROM CART C) A"
-					+ " WHERE A.NUM = ?"
-					+ " and cart_mem = ?"
-					+ " and cart_state = '0')");
+			sql.append("DELETE FROM CART" 
+					 + " WHERE CART_NUM = (SELECT cart_num FROM (SELECT ROWNUM NUM, C.* FROM CART C"
+					 + " where CART_MEM = ?"
+					 + " AND CART_STATE = '0')A"
+					 + " WHERE A.NUM = ?)");
 			pstm = conn.prepareStatement(sql.toString());
 			
-			pstm.setInt(1, removeNum);
-			pstm.setString(2, mem_id);
-
+			pstm.setString(1, mem_id);
+			pstm.setInt(2, removeNum);
+			
 			int res = pstm.executeUpdate();
 			
 			if(res == 0) {
