@@ -45,8 +45,7 @@ public class MainMenu {
                break;
             }
             case 4: {
-               run = false;
-               break;
+            	return;
             }
            }
          }
