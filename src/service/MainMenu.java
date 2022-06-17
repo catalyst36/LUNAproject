@@ -42,7 +42,7 @@ public class MainMenu {
             }
             case 3: {
                PageScreen page = new PageScreen();
-               page.pagescreen();
+               page.pagescreen(mem_id);
                break;
             }
             case 4: {

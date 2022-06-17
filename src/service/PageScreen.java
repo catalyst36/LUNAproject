@@ -1,18 +1,21 @@
 package service;
 
+import java.util.ArrayList;
+
+import dao.mypage.Member;
 import dao.mypage.MyPageDAO;
 import util.BufferUtil;
 
 public class PageScreen {
 	MyPageDAO mp = new MyPageDAO(); 
- public void pagescreen(){
+ public void pagescreen(String mem_id){
 	 
 	 boolean b=true;
     try {
     	while(b){
             System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
            System.out.printf("│%-97s│\n","");
-           System.out.printf("│%15s %15s %15s %15s %15s %9s \n","1.기본정보조회","2.비밀번호변경","3.포인트충전","4.회원탈퇴","5.마이페이지","│");
+           System.out.printf("│%15s %15s %15s %15s %15s %9s \n","1.기본정보조회","2.비밀번호변경","3.포인트충전","4.회원탈퇴","5.도서환불","│");
            System.out.printf("│%-97s│\n","");
            System.out.println("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
 
@@ -37,7 +40,11 @@ public class PageScreen {
     	    	mp.delMem();
     	    	break;
     	    case 5:
-    	    	b=false;
+    	    	Member m = new Member();
+    	    	ArrayList refundList = m.viewPurchasedBook(mem_id);
+    	    	for(int i=0;i<refundList.size();i++) {
+    	    		System.out.println(refundList.get(i).toString());
+    	    	}
     	    	break;
     	    	}
     	
