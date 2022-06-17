@@ -203,6 +203,8 @@ public class CartDAO {
 
 			}
 
+			System.out.println("총 구매 가격 : " + totalPrice);
+			
 			String sql = "select mem_cash from member where mem_id = '" + list.get(0).getCart_mem() + "'";
 
 			rs = stmt.executeQuery(sql);
@@ -228,6 +230,7 @@ public class CartDAO {
 						+ "and cart_state = '0'";
 				stmt.executeUpdate(sql);
 			} else {
+				System.out.println("구매 실패! 잔고가 부족합니다.");
 				return;
 			}
 
