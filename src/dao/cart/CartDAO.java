@@ -26,7 +26,7 @@ public class CartDAO {
 
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
-
+			System.out.println();
 			System.out.println("  번호   주문번호    	 도서 이름 		도서코드   수량");
 
 			while (rs.next()) {
@@ -124,7 +124,10 @@ public class CartDAO {
 			int res = pstm.executeUpdate();
 			
 			if(res == 0) {
-				System.out.println("실패");
+				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		        System.out.printf("%55s\n","삭제가 실패했습니다");
+		        System.out.printf("%55s\n","관리자에게 문의하세요");
+		        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 			}
 			
 		} catch (SQLException e) {
@@ -203,7 +206,9 @@ public class CartDAO {
 
 			}
 
-			System.out.println("총 구매 가격 : " + totalPrice);
+			System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	        System.out.printf("%62s\n","결재에 성공하셨습니다. 총 구매 가격은 "+totalPrice+"원 입니다.");
+	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 			
 			String sql = "select mem_cash from member where mem_id = '" + list.get(0).getCart_mem() + "'";
 
@@ -230,7 +235,10 @@ public class CartDAO {
 						+ "and cart_state = '0'";
 				stmt.executeUpdate(sql);
 			} else {
-				System.out.println("구매 실패! 잔고가 부족합니다.");
+				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		        System.out.printf("%55s\n","잔고가 부족해서 구매에 실패했습니다");
+		        System.out.printf("%55s\n","마이페이지에서 현금을 충전해주세요");
+		        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 				return;
 			}
 
