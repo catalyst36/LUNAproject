@@ -36,7 +36,7 @@ public class MainMenu {
             }
             case 2: {
                CartService cart = new CartService();
-               cart.cartView(cartNumber);
+               cart.cartView(cartNumber, mem_id);
                break;
             }
             case 3: {
