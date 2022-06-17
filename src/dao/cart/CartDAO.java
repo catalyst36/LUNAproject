@@ -216,7 +216,7 @@ public class CartDAO {
 
 				for (int i = 0; i < list.size(); i++) {
 					sql = "UPDATE BOOK SET  BOOK_QTY = BOOK_QTY - " + list.get(i).getCart_qty() +" , BOOK_QTYSALE = BOOK_QTYSALE + " 
-						 + list.get(i).getCart_qty() + " WHERE BOOK_ID = '650001'";
+						 + list.get(i).getCart_qty() + " WHERE BOOK_ID = '"+list.get(i).getCart_id()+"'";
 					stmt.executeUpdate(sql);
 				}
 
