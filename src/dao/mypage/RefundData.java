@@ -3,6 +3,7 @@ package dao.mypage;
 public class RefundData {
 	
 	private int num;
+	private int refund_num;
 	private String refund_bookId;
 	private String refund_bookName;
 	private String refund_author;
@@ -58,12 +59,10 @@ public class RefundData {
 	public void setRefund_qty(int refund_qty) {
 		this.refund_qty = refund_qty;
 	}
-	@Override
-	public String toString() {
-		return "RefundData [num=" + num + ", refund_bookId=" + refund_bookId + ", refund_bookName=" + refund_bookName
-				+ ", refund_author=" + refund_author + ", refund_sale=" + refund_sale + ", refund_mem=" + refund_mem
-				+ ", refund_date=" + refund_date + ", refund_qty=" + refund_qty + "]";
+	public int getRefund_num() {
+		return refund_num;
 	}
-	
-	
+	public void setRefund_num(int refund_num) {
+		this.refund_num = refund_num;
+	}
 }

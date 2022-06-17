@@ -21,7 +21,7 @@ public class Member {
 			conn = Connect.getConnection();
 			StringBuffer sql = new StringBuffer();
 			
-			sql.append("SELECT ROWNUM NUM, A.* FROM (SELECT C.cart_id, B.BOOK_NAME"
+			sql.append("SELECT ROWNUM NUM, A.* FROM (SELECT C.cart_id, B.BOOK_NAME, C.CART_NUM"
 	                + ", B.BOOK_AUTHOR"
 	                + ", B.BOOK_SALE"
 	                + ", C.CART_MEM"
@@ -41,10 +41,12 @@ public class Member {
 			while(rs.next()) {
 				RefundData rd = new RefundData();
 				
-				rd.setNum(rs.getInt("NUM"));
+				rd.setNum(rs.getInt("num"));
+				rd.setRefund_num(rs.getInt("cart_num"));
 				rd.setRefund_bookId(SEQ.createSequenceKey(rs.getString("cart_id")));
 				rd.setRefund_bookName(rs.getString("book_name"));
 				rd.setRefund_author(rs.getString("book_author"));
+				rd.setRefund_mem(rs.getString("cart_mem"));
 				rd.setRefund_sale(rs.getInt("book_sale"));
 				rd.setRefund_date(rs.getString("cart_date"));
 				rd.setRefund_qty(rs.getInt("cart_qty"));
@@ -60,6 +62,8 @@ public class Member {
 			e.printStackTrace();
 		}finally {
 			try {
+				if(rs != null)
+					rs.close();
 				if (pstm != null)
 					pstm.close();
 				if (conn != null)
@@ -73,10 +77,56 @@ public class Member {
 	
 	
 	
-	void refund() {
-		
+	public int refund(RefundData data) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		int res = 0;
+		try {
+			
+			conn = Connect.getConnection();
+			String sql;
+			
+			sql = "update cart set cart_state = '2' where cart_num = " + data.getRefund_num();
+			
+			pstm = conn.prepareStatement(sql);
+			res = pstm.executeUpdate();
+			if(res == 0)
+				System.out.println("장바구니 테이블 업데이트 실패");
+			pstm.close();
+			
+			sql = "update book set book_qtysale = book_qtysale - " + data.getRefund_qty()
+				  + ", book_qty = book_qty + " + data.getRefund_qty()
+				  + " where book_id = '" + SEQ.returnSequenceKey(data.getRefund_bookId()) + "'";
+			
+			pstm = conn.prepareStatement(sql);
+			res = pstm.executeUpdate();
+			if(res == 0)
+				System.out.println("도서 테이블 업데이트 실패");
+			pstm.close();
+			
+			sql = "update member set mem_cash = mem_cash + " + data.getRefund_sale()
+				  + " where mem_id = '" + data.getRefund_mem() + "'";
+			
+			pstm = conn.prepareStatement(sql);
+			res = pstm.executeUpdate();
+			if(res == 0)
+				System.out.println("회원 테이블 업데이트 실패");
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstm != null)
+					pstm.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return res;
 	}
-	
-	
 	
 }
