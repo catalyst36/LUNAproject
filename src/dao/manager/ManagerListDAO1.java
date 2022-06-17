@@ -59,13 +59,10 @@ public class ManagerListDAO1 {
 			
    		 System.out.print("\n\n\n");
          System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-        System.out.printf("%20s %20s %20s\n","1.이름 순","2.생일 순", "3.회원 등급 순");
+        System.out.printf("%30s %20s %20s\n","1.이름 순","2.생일 순", "3.회원 등급 순");
         System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 			
 			
-//			System.out.println("---------------------------------------------------------------------------------");
-//			System.out.println(" 1. 이름 순 |  2. 생일 순 |  3. 회원 등급 순 ");
-//			System.out.println("---------------------------------------------------------------------------------");
 			int input = BufferUtil.nextInt();
 			
 			switch(input){
@@ -81,8 +78,8 @@ public class ManagerListDAO1 {
 			}
 			
 
-			System.out.println("ID\t\t패스워드\t\t이름\t\t주소1\t\t주소2\t\t이메일\t\t생일\t\t마일리지 현황\t\t전화번호\t\t보유금액\t\t회원등급");
-			System.out.println("====================================================================");
+			System.out.printf("%10s      %10s   %10s                   %10s                          %10s                      %10s           %10s             %10s     %10s        %10s    ","ID","Password","이름","주소","이메일","생일","마일리지 현황","전화번호","보유금액","회원등급");
+			System.out.printf("\n%100s\n","─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
 			while(rs.next()){
 				String mem_id = rs.getString("mem_id");
 				String mem_pw = rs.getString("mem_pw");
@@ -96,10 +93,10 @@ public class ManagerListDAO1 {
 				String mem_cash = rs.getString("mem_cash");
 				String mem_grade = rs.getString("mem_grade");
 				String mem_qty = rs.getString("nvl(c.sum_qty,0)");
+				
+				
+				System.out.printf(" %-10s    %-10s     %-10s    %-50s %-20s %-10s           %-15s           %-20s          %-10s        %-10s   \n",mem_id,mem_pw,mem_name,mem_add1+mem_add2,mem_email, mem_bir, mem_mileage, mem_ph,mem_cash,mem_grade,mem_qty);
 
-				System.out.println(mem_id + "\t\t" + mem_pw + "\t\t" + mem_name + "\t\t" + mem_add1 + "\t\t"
-					+ mem_add2 + "\t\t" + mem_email + "\t\t" + mem_bir + "\t\t" + mem_mileage + "\t\t" + mem_ph
-					+ "\t\t" + mem_cash + "\t\t" + mem_grade + "\t\t" + mem_qty);
 			}
 			
 		} catch (Exception e) {
