@@ -20,7 +20,7 @@ public class Main {
 
 		
 
-			System.out.print("[입력] >> ");
+           System.out.printf("%55s","원하시는 메뉴번호를 입력하세요 ☞ ");
 
 			int input = 0;
 
