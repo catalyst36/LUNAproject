@@ -27,12 +27,13 @@ public class LoginDAO {
 			rs = stmt.executeQuery(sql);
 			
 			
-			System.out.println("[로그인] ");
-			System.out.println("[아이디와 비밀번호를 입력하세요]");
-			
-			System.out.print("아이디 : ");
+			System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	        System.out.printf("%55s\n","로그인을 진행합니다");
+	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+
+	        System.out.printf("%55s","아이디를 입력하세요 ☞ ");
 			String id = BufferUtil.readLine();
-			System.out.print("비밀번호 : ");
+			System.out.printf("%55s","비밀번호를 입력하세요 ☞ ");
 			String pw = BufferUtil.readLine();			
 			
 			int missIdCount = 0;
@@ -47,7 +48,8 @@ public class LoginDAO {
 				
 				if(id.equals(mem_id)) {
 					if(pw.equals(mem_pw)) {
-						System.out.println("[로그인 성공]");
+						System.out.printf("%55s","!!로그인 성공!!");
+						System.out.println();
 						MainMenu sc2 = new MainMenu();
 						CartDAO cart = new CartDAO();
 						int cartNumber = cart.getNewCartNumber();
@@ -62,7 +64,7 @@ public class LoginDAO {
 						System.out.println("| 새 비밀번호를 만드시겠습니까? |");
 						System.out.println("|    1. 예   2. 아니오    |");
 						System.out.println(" ---------------------- ");
-						System.out.print("선택 : ");
+						System.out.print("[선택] >> ");
 						int select = BufferUtil.nextInt();
 						
 						switch(select) {
@@ -71,11 +73,17 @@ public class LoginDAO {
 							run = false;
 							break;
 						case 2:
-							System.out.println("[메인 메뉴로 돌아갑니다]");
+							System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+					        System.out.printf("%55s\n","메인 메뉴로 돌아갑니다");
+					        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+					        System.out.println();
 							run = false;
 							break;
 						default:
-							System.out.println("[\"예\" 또는 \"아니오\"를 선택하세요]");
+							System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+					        System.out.printf("%55s\n","\"예\" 또는 \"아니오\"를 선택하세요");
+					        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+					        System.out.println();
 							break;
 						}
 						}
@@ -124,14 +132,17 @@ public class LoginDAO {
 		con = Connect.getConnection();
 		stmt = con.createStatement();
 		
-		System.out.println("[아래의 회원정보를 입력하세요]");
-		System.out.print("아이디 : ");
+		System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+        System.out.printf("%55s\n","아래의 회원 정보를 입력하세요");
+        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+        System.out.println();
+        System.out.printf("%55s","아이디를 입력하세요 ☞ ");
 		String mem_id = BufferUtil.readLine();
-		System.out.print("이름 : ");
+		System.out.printf("%55s","이름을 입력하세요 ☞ ");
 		String mem_name = BufferUtil.readLine();
-		System.out.print("생년월일 : ");
+		System.out.printf("%55s","생년월일을 입력하세요 ☞ ");
 		String mem_bir = BufferUtil.readLine();
-		System.out.print("전화번호 : ");
+		System.out.printf("%55s","전화번호를 입력하세요 ☞ ");
 		String mem_ph = BufferUtil.readLine();
 		
 		String sql = "SELECT MEM_ID, MEM_NAME, MEM_BIR, MEM_PH"+
@@ -153,7 +164,7 @@ public class LoginDAO {
 			System.out.println("|     1. 예   2. 아니오       |");
 			System.out.println(" -------------------------- ");
 			
-			System.out.println("선택 : ");
+			System.out.println("[선택] >> ");
 			int select = BufferUtil.nextInt();
 			
 			switch(select) {
@@ -161,20 +172,27 @@ public class LoginDAO {
 				createRandomPw(mem_id);
 				run = false;
 			case 2:
-				System.out.println("[메인 메뉴로 돌아갑니다]");
+				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		        System.out.printf("%55s\n","메인 메뉴로 돌아갑니다");
+		        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		        System.out.println();
 				run = false;
 				break;
 			default:
-				System.out.println("[\"예\" 또는 \"아니오\"를 선택하세요]");
+				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		        System.out.printf("%55s\n","\"예\" 또는 \"아니오\"를 선택하세요");
+		        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		        System.out.println();
 				break;
 			}
 			}
 			
 		}else {
-			System.out.println(" ---------------------- ");
-			System.out.println("|    회원정보가 틀렸습니다    |");
-			System.out.println("|    메인 메뉴로 돌아갑니다   |");
-			System.out.println(" ---------------------- ");
+			System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	        System.out.printf("%55s\n","회원정보가 틀렸습니다");
+	        System.out.printf("%55s\n","메인 메뉴로 돌아갑니다");
+	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	        System.out.println();
 		}
 		}
 	
@@ -201,9 +219,12 @@ public class LoginDAO {
 		rs = stmt.executeUpdate(sql);
 		
 		if(rs !=0 ) {
-		System.out.println("[임시 비빌번호가 생성되었습니다]");
-		System.out.println("[임시 비밀번호 : "+randomPw+"]");
-		System.out.println("[마이 페이지에서 꼭! 변경해야됩니다]");
+		System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	    System.out.printf("%55s\n","임시 비밀번호가 생성되었습니다");
+	    System.out.printf("%55s\n","임시 비밀번호 : "+randomPw);
+	    System.out.printf("%55s\n","마이페이지에서 꼭 변경하세요");
+	    System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	    System.out.println();		
 		}
 	}
 	
