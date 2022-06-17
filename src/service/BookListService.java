@@ -63,13 +63,15 @@ public class BookListService {
 			System.out.print("<입력> : ");
 			int cart_qty = BufferUtil.nextInt();
 			for(int i = 0; i<list.size(); i++) {
-				if(book_num == list.get(i).getBook_num() && list.get(i).getBook_qty() >= cart_qty) {
-					String bookId = Integer.toString(SEQ.returnSequenceKeyList(list.get(i)));
-					CartDAO cd = new CartDAO();
-					cd.insertCart(bookId, mem_id, cart_qty, cartNumber);
-				}else {
-					System.out.println("도서 재고가 없습니다.");
-					break;
+				if(book_num == list.get(i).getBook_num()) {
+					if(list.get(i).getBook_qty() >= cart_qty) {
+						String bookId = Integer.toString(SEQ.returnSequenceKeyList(list.get(i)));
+						CartDAO cd = new CartDAO();
+						cd.insertCart(bookId, mem_id, cart_qty, cartNumber);
+					}else {
+						System.out.println("도서 재고가 부족합니다.");
+						break;
+					}
 				}
 			}
 			break;
