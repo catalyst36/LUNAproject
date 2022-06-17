@@ -15,7 +15,7 @@ public class ManagerListDAO3 {
 
 	public void checkStock() throws Exception {
 		Manager manager = new Manager();
-		SEQ seq = new SEQ();
+
 
 		Connection conn = Connect.getConnection();
 		
@@ -41,8 +41,7 @@ public class ManagerListDAO3 {
 				System.out.println("책코드\t\t책 이름\t\t판매가\t\t책 저자\t\t출판사\t\t책 수량\t\t장르\t\t판매수량");
 				System.out.println("====================================================================");
 				while(rs.next()){
-					String book_id = rs.getString("book_id");
-					String bookId_final = seq.createSequenceKey(book_id); // DB의 책코드를 문자열로 변환 (65000 -> A000)
+					String book_id = SEQ.createSequenceKey(rs.getString("book_id")); // DB의 책코드를 문자열로 변환 (65000 -> A000)
 					String book_name = rs.getString("book_name");
 					String book_sale = rs.getString("book_sale");
 					String book_author = rs.getString("book_author");
@@ -51,7 +50,7 @@ public class ManagerListDAO3 {
 					String book_genre = rs.getString("book_genre");
 					String book_qtysale = rs.getString("book_qtysale");
 
-					System.out.println(bookId_final + "\t\t" + book_name + "\t\t" + book_sale + "\t\t"
+					System.out.println(book_id + "\t\t" + book_name + "\t\t" + book_sale + "\t\t"
 					+ book_author + "\t\t" + book_pub + "\t\t" + book_qty + "\t\t" + book_genre  + "\t\t" +	book_qtysale);
 					
 
@@ -67,7 +66,7 @@ public class ManagerListDAO3 {
 				System.out.print("입고할 수량 입력 : ");
 				int  bqty = BufferUtil.nextInt();
 			
-				int bid_final = seq.returnSequenceKey(bid); // 입력받은 문자열을 숫자로 변환하여 bid_final에 저장
+				int bid_final = SEQ.returnSequenceKey(bid); // 입력받은 문자열을 숫자로 변환하여 bid_final에 저장
 				String bid_fin = Integer.toString(bid_final); // BOOK_ID 컬럼이 VARCHAR2이므로 bid_final을 문자열로 변환 
 				System.out.println(bid_final); // 완료되면 지우기
 			
