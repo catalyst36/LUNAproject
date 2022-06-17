@@ -69,6 +69,7 @@ public class BookListService {
 					cd.insertCart(bookId, mem_id, cart_qty, cartNumber);
 				}else {
 					System.out.println("도서 재고가 없습니다.");
+					break;
 				}
 			}
 			break;
