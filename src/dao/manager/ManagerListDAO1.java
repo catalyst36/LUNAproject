@@ -22,30 +22,42 @@ public class ManagerListDAO1 {
 		
 		try {	
 
-			String sql = "select m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
-					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,"
-					+ "m.mem_grade, nvl(sum(c.cart_qty),0)  from member m, cart c where mem_id = cart_mem  (+)"
-					+ "group by m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
-					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,m.mem_grade "
-					+ "order by m.mem_name";
-			String sql1 ="select m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
-					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,"
-					+ "m.mem_grade, nvl(sum(c.cart_qty),0)  from member m, cart c where mem_id = cart_mem (+) "
-					+ "group by m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
-					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,m.mem_grade "
-					+ "order by m.mem_bir";
-			String sql2 = "select m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
-					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,"
-					+ "m.mem_grade, nvl(sum(c.cart_qty),0)  from member m, cart c where mem_id = cart_mem (+) "
-					+ "group by m.mem_id, m.mem_pw, m.mem_name , m.mem_add1, m.mem_add2 ,"
-					+ "m.mem_email, m.mem_bir, m.mem_mileage ,m.mem_ph ,m.mem_cash ,m.mem_grade "
-					+ "order by sum(c.cart_qty)";
+			String sql = "select m.mem_id, m.mem_pw, m.mem_name, m.mem_add1 , m.mem_add2 , m.mem_email, "
+					+ " m.mem_bir, m.mem_mileage, m.mem_ph, m.mem_cash, m.mem_grade, nvl(c.sum_qty,0) "
+					+ " from member m, ("
+					+ "    select cart_mem, nvl(sum(cart_qty),0) sum_qty "
+					+ "    from cart "
+					+ "    where cart_state = 1 "
+					+ "    group by cart_mem "
+					+ "    ) c "
+					+ " where m.mem_id = c.cart_mem (+) "
+					+ " order by m.mem_name ";
+			String sql1 = "select m.mem_id, m.mem_pw, m.mem_name, m.mem_add1 , m.mem_add2 , m.mem_email, "
+					+ " m.mem_bir, m.mem_mileage, m.mem_ph, m.mem_cash, m.mem_grade, nvl(c.sum_qty,0) "
+					+ " from member m, ("
+					+ "    select cart_mem, nvl(sum(cart_qty),0) sum_qty "
+					+ "    from cart "
+					+ "    where cart_state = 1 "
+					+ "    group by cart_mem "
+					+ "    ) c "
+					+ " where m.mem_id = c.cart_mem (+) "
+					+ " order by m.mem_bir ";
+			String sql2 = "select m.mem_id, m.mem_pw, m.mem_name, m.mem_add1 , m.mem_add2 , m.mem_email, "
+					+ " m.mem_bir, m.mem_mileage, m.mem_ph, m.mem_cash, m.mem_grade, nvl(c.sum_qty,0) "
+					+ " from member m, ("
+					+ "    select cart_mem, nvl(sum(cart_qty),0) sum_qty "
+					+ "    from cart "
+					+ "    where cart_state = 1 "
+					+ "    group by cart_mem "
+					+ "    ) c "
+					+ " where m.mem_id = c.cart_mem (+) "
+					+ " order by m.mem_grade, c.sum_qty desc ";
 			
 			stmt = conn.createStatement();
 			
 		//
 			System.out.println("---------------------------------------------------------------------------------");
-			System.out.println(" 1. 이름 순 |  2. 생일 순 |  3. 도서 구매 순 ");
+			System.out.println(" 1. 이름 순 |  2. 생일 순 |  3. 회원 등급 순 ");
 			System.out.println("---------------------------------------------------------------------------------");
 			int input = BufferUtil.nextInt();
 			
@@ -76,7 +88,7 @@ public class ManagerListDAO1 {
 				String mem_ph = rs.getString("mem_ph");
 				String mem_cash = rs.getString("mem_cash");
 				String mem_grade = rs.getString("mem_grade");
-				String mem_qty = rs.getString("nvl(sum(c.cart_qty),0)");
+				String mem_qty = rs.getString("nvl(c.sum_qty,0)");
 
 				System.out.println(mem_id + "\t\t" + mem_pw + "\t\t" + mem_name + "\t\t" + mem_add1 + "\t\t"
 					+ mem_add2 + "\t\t" + mem_email + "\t\t" + mem_bir + "\t\t" + mem_mileage + "\t\t" + mem_ph
