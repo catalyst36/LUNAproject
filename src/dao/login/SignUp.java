@@ -27,10 +27,8 @@ public void insertMember(){
 			System.out.println("\n\n\n\n\n\n\n");
 			
             System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-           System.out.printf("│%-97s│\n","");
-           System.out.printf("│%50s %43s│\n"," 회원 가입을 진행합니다.","");
-           System.out.printf("│%53s %39s│\n","아래에 정보를 기입해 주세요.","");
-           System.out.printf("│%-97s│\n","");
+           System.out.printf("%54s %43s\n"," 회원 가입을 진행합니다.","");
+           System.out.printf("%55s %39s\n","아래에 정보를 기입해 주세요.","");
            System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 
 	        System.out.print("\t\t\t       [아이디] ☞  ");
