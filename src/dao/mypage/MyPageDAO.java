@@ -23,12 +23,21 @@ public class MyPageDAO {
 		try {
 
 			conn = Connect.getConnection();
-			 System.out.println(" ┌──────────────────────────────────────────────────────────────────────┐");
-	         System.out.println(" │\t\t\t\t\t\t\t\t\t│");
-	         System.out.println(" │\t\t\t        회원님의 기본정보를 조회합니다.              \t\t│");
-	         System.out.println(" │\t\t\t  인증을 위해 회원님의 ID를 입력해주세요.               \t\t│");
-	         System.out.println(" │\t\t\t\t\t\t\t\t\t│");
-	         System.out.println(" └──────────────────────────────────────────────────────────────────────┘");
+			
+			
+	           System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+
+	           System.out.printf("│%55s \n","회원님의 기본정보를 조회합니다.");
+	           System.out.printf("│%55s \n","인증을 위해 회원님의 ID를 입력해주세요.");
+
+	           System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+			
+//			 System.out.println(" ┌──────────────────────────────────────────────────────────────────────┐");
+//	         System.out.println(" │\t\t\t\t\t\t\t\t\t│");
+//	         System.out.println(" │\t\t\t        회원님의 기본정보를 조회합니다.              \t\t│");
+//	         System.out.println(" │\t\t\t  인증을 위해 회원님의 ID를 입력해주세요.               \t\t│");
+//	         System.out.println(" │\t\t\t\t\t\t\t\t\t│");
+//	         System.out.println(" └──────────────────────────────────────────────────────────────────────┘");
 			  System.out.print("\t\t\t       ID ☞  ");
 			
 			
