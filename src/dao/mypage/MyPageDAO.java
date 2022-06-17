@@ -32,13 +32,8 @@ public class MyPageDAO {
 
 	           System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 			
-//			 System.out.println(" ┌──────────────────────────────────────────────────────────────────────┐");
-//	         System.out.println(" │\t\t\t\t\t\t\t\t\t│");
-//	         System.out.println(" │\t\t\t        회원님의 기본정보를 조회합니다.              \t\t│");
-//	         System.out.println(" │\t\t\t  인증을 위해 회원님의 ID를 입력해주세요.               \t\t│");
-//	         System.out.println(" │\t\t\t\t\t\t\t\t\t│");
-//	         System.out.println(" └──────────────────────────────────────────────────────────────────────┘");
-			  System.out.print("\t\t\t       ID ☞  ");
+
+	             System.out.printf("%55s","원하시는 메뉴번호를 입력하세요 ☞ ");
 			
 			
 			String getid = BufferUtil.readLine();

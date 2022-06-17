@@ -20,7 +20,7 @@ public class PageScreen {
            System.out.printf("│%-97s│\n","");
            System.out.println("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
  
-    	    System.out.print("\t\t\t   원하시는 메뉴번호를 입력하세요 ☞ ");
+           System.out.printf("%55s","원하시는 메뉴번호를 입력하세요 ☞ ");
     	    
     	    int input = BufferUtil.nextInt();
     	   

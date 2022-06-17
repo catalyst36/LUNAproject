@@ -26,27 +26,32 @@ public class Manager {
 		int index = 0;
 		
 		while(true){
-			System.out.println("|--------------관리자 로그인---------------|");
-			System.out.print("ID : ");
+		    System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+			System.out.printf("%20s", "ID : ");
 			String id = BufferUtil.readLine();
-			System.out.print("PW : ");
+			System.out.printf("%20s","PW : ");	          
 			String pw = BufferUtil.readLine();
+
+			System.out.println();
 			
 			EmployeeVO vo = managerLogin.empLogin(id, pw);
 			if (vo != null){
-					System.out.println("로그인에 성공하였습니다.");
-					System.out.println("|----------------------------------------------|");
+					System.out.printf("%52s\n", "로그인에 성공하였습니다.");
+			          System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+
 					System.out.println();
 					manager.exe();
 					break;
 			} else{
-				System.out.println("아이디 혹은 비밀번호가 틀렸습니다.");
-				System.out.println("|----------------------------------------------|");
+				System.out.printf("%52s\n","아이디 혹은 비밀번호가 틀렸습니다.");
+		          System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 				System.out.println();
 				index++;
 
 				if (index == 5){
-					System.out.println("로그인을 5회 실패하였습니다.");
+				    System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+					System.out.printf("%52s\n","로그인을 5회 실패하였습니다. 메인으로 돌아갑니다.");
+			          System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 					System.out.println();
 					System.out.println();
 					try {
@@ -65,10 +70,11 @@ public class Manager {
 		Manager manager = new Manager();
 		boolean run = false; // while문 안쓸거면 지우기
 		
-		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-		System.out.println("| 1. 책 입고  |  2. 회원 목록 조회 |  3. 도서 목록 조회  |  4. 로그아웃  |");
-		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-		System.out.print("사용할 기능 입력 : ");
+        System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+        System.out.printf("%20s %18s %18s %18s\n","1. 책 입고","2. 회원 목록 조회","3. 도서 목록 조회","4. 로그아웃");
+                System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+
+		System.out.printf("%55s","사용할 기능을 입력하세요 ☞  ");
 		int num = BufferUtil.nextInt();
 		
 		switch(num){
@@ -98,9 +104,11 @@ public class Manager {
 		ManagerListDAO2 bookList = new ManagerListDAO2();
 		
 		bookList.bookSelect();
-		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-		System.out.println("| 1. 품절 품목 추가 입고   | 2. 뒤로 가기      |");
-		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+        System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		System.out.printf("%20s %18s \n", "1. 품절 품목 추가 입고","2. 뒤로 가기");
+        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+
+		System.out.printf("%55s","사용할 기능을 입력하세요 ☞  ");
 		int num = BufferUtil.nextInt();
 		
 		if (num == 1){
@@ -113,7 +121,10 @@ public class Manager {
 	}
 	
 	public void logout() throws Exception{
-		System.out.println("로그아웃 되었습니다");
+        System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		System.out.printf("%52s\n","로그아웃 되었습니다");
+        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+
 		try {
 			Main.main(null); // 로그아웃 시 메인 화면으로 이동
 		} catch (IOException e) {
