@@ -35,7 +35,7 @@ public class LoginDAO {
 			String id = BufferUtil.readLine();
 			System.out.printf("%55s","비밀번호를 입력하세요 ☞ ");
 			String pw = BufferUtil.readLine();			
-			
+			System.out.println();
 			int missIdCount = 0;
 			int rowCount= 0;
 			
@@ -48,7 +48,9 @@ public class LoginDAO {
 				
 				if(id.equals(mem_id)) {
 					if(pw.equals(mem_pw)) {
-						System.out.printf("%55s","!!로그인 성공!!");
+						System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+				        System.out.printf("%55s\n","※로그인에 성공했습니다※");
+				        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 						System.out.println();
 						MainMenu sc2 = new MainMenu();
 						CartDAO cart = new CartDAO();

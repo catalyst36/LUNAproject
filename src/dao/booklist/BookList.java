@@ -37,9 +37,12 @@ public class BookList {
 	}
 	
 	public void searchBookName(ArrayList<BookVO> list) throws IOException{
-		System.out.println("[도서 제목을 입력하세요]");
-		System.out.print("<입력> : ");
-		String book_name = BufferUtil.readLine();
+		System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+        System.out.printf("%55s\n","제목으로 책 검색을 실행합니다");
+        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+        System.out.printf("%55s","책 제목을 입력하세요 ☞ ");
+        String book_name = BufferUtil.readLine();
+        System.out.println();
 		int missNameCount = 0;
 		for(int i = 0; i<145; i++) {
 			System.out.print("-");
@@ -69,13 +72,20 @@ public class BookList {
 			System.out.print("-");
 			}
 			System.out.println();
-			if(missNameCount==list.size()) System.out.println("[찾으시는 도서가 없습니다]");
+			if(missNameCount==list.size()) {
+				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		        System.out.printf("%55s\n","찾으시는 도서가 없습니다.");
+		        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+			}
 	}
 	
 	public void searchBookGenre(ArrayList<BookVO> list) throws IOException{
-		System.out.println("[장르를 입력하세요]");
-		System.out.print("<입력> : ");
+		System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+        System.out.printf("%55s\n","장르로 책 검색을 실행합니다");
+        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+        System.out.printf("%55s","책 장르를 입력하세요 ☞ ");
 		String book_genre = BufferUtil.readLine();
+		System.out.println();
 		int missGenreCount = 0;
 		
 		for(int i = 0; i<145; i++) {
@@ -106,13 +116,20 @@ public class BookList {
 			System.out.print("-");
 			}
 			System.out.println();
-			if(missGenreCount==list.size()) System.out.println("[찾으시는 도서가 없습니다]");
+			if(missGenreCount==list.size()) {
+				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		        System.out.printf("%55s\n","찾으시는 도서가 없습니다.");
+		        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+			}
 	}
 	
 	public void searchBookAuthor(ArrayList<BookVO> list) throws IOException{
-		System.out.println("[저자를 입력하세요]");
-		System.out.print("<입력> : ");
+		System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+        System.out.printf("%55s\n","저자로 책 검색을 실행합니다");
+        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+        System.out.printf("%55s","책 저자를 입력하세요 ☞ ");
 		String book_author = BufferUtil.readLine();
+		System.out.println();
 		int missAuthorCount = 0;
 		
 		for(int i = 0; i<145; i++) {
@@ -143,7 +160,11 @@ public class BookList {
 		System.out.print("-");
 		}
 		System.out.println();
-		if(missAuthorCount==list.size()) System.out.println("[찾으시는 도서가 없습니다]");
+		if(missAuthorCount==list.size()) {
+			System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	        System.out.printf("%55s\n","찾으시는 도서가 없습니다.");
+	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+		}
 	}
 	
 }
