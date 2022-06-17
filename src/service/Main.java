@@ -18,7 +18,7 @@ public class Main {
 			System.out.println("|\t\t\t\t\t\t\t\t\t|");
 			System.out.println(" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ ");
 
-			System.out.print("[입력] ");
+			System.out.print("[입력] >> ");
 
 			int input = 0;
 

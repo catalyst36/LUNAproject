@@ -23,26 +23,42 @@ public void insertMember(){
 			sql.append(" VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt = con.prepareStatement(sql.toString());
 			
-			System.out.println("[회원가입]");
-			System.out.println("[아래의 가입정보를 입력하세요.]");
-			System.out.print("아이디 : ");
+			
+			System.out.println("\n\n\n\n\n\n\n\n\n\n");
+			System.out.println("┌──────┤ 회원가입 ├──────┐");
+			System.out.println("│      └───────┘ ");
+			System.out.println("│       [가입정보입력]      │");
+			System.out.println("└───────────────────────┘");
+			System.out.println("\n\n\n\n\n");
+			System.out.print("[아이디] >> ");
 			String mem_id = BufferUtil.readLine();
-			System.out.print("비밀번호 : ");
+			System.out.println();
+			System.out.print("[비밀번호] >> ");
 			String mem_pw = BufferUtil.readLine();
-			System.out.print("이름 : ");
+			System.out.println();
+			System.out.print("[이름] >> ");
 			String mem_name = BufferUtil.readLine();
-			System.out.print("생년월일 : ");
+			System.out.println();
+			System.out.print("[생년월일] >> ");
 			String mem_bir = BufferUtil.readLine();
-			System.out.print("전화번호 : ");
+			System.out.println();
+			System.out.print("[전화번호] >> ");
 			String mem_ph = BufferUtil.readLine();
-			System.out.print("이메일 : ");
+			System.out.println();
+			System.out.print("[이메일] >> ");
 			String mem_email = BufferUtil.readLine();
-			System.out.print("주소 : ");
+			System.out.println();
+			System.out.print("[주소] >> ");
 			String mem_add1 = BufferUtil.readLine();
-			System.out.print("상세주소 : ");
+			System.out.println();
+			System.out.print("[상세주소] >> ");
 			String mem_add2 = BufferUtil.readLine();
-			System.out.print("충전금액 : ");
+			System.out.println();
+			System.out.print("[충전금액] >> ");
 			int mem_cash = BufferUtil.nextInt();
+			
+			
+			
 			
 			pstmt.setString(1, mem_id);
 			pstmt.setString(2, mem_pw);
