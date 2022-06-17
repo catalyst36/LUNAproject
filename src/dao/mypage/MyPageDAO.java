@@ -33,7 +33,7 @@ public class MyPageDAO {
 			
 			
 			String getid = BufferUtil.readLine();
-			String sql = "select mem_id,mem_add1,mem_add2, mem_email, mem_bir, mem_mileage, mem_cash"
+			String sql = "select mem_id,mem_add1,mem_add2, mem_email, mem_bir, mem_mileage, mem_cash, mem_grade"
 					   + " from member"
 					   + " where mem_id = ? ";
 
@@ -56,12 +56,14 @@ public class MyPageDAO {
 				String bir = rs.getString("mem_bir");
 				int mil = rs.getInt("mem_mileage");
 				int cash = rs.getInt("mem_cash");
+				String grade = rs.getString("mem_grade");
 				
 				
 				
 				 System.out.println(" ┌──────────────────────────────────────────────────────────────────────┐");
 		         System.out.println(" │\t\t\t\t\t\t\t\t\t│");
 		         System.out.println(" │\t\t\tㆍID : "+id+"     \t\t\t\t\t│");
+		         System.out.println(" │\t\t\tㆍ등급 : "+grade+"     \t\t\t\t\t│");
 		         System.out.println(" │\t\t\tㆍ생일  : "+bir+" \t\t\t│");
 		         System.out.println(" │\t\t\tㆍ이메일  : "+em+"\t\t\t\t│");
 		         System.out.println(" │\t\t\tㆍ주소  : "+add1+add2+"          \t\t\t\t│");
