@@ -11,14 +11,16 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 
 		while (true) {
-			System.out.println("\t\t\t\t[루나문고]");
-			System.out.println(" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ ");
-			System.out.println("|\t\t\t\t\t\t\t\t\t|");
-			System.out.println("|\t 1.회원가입 \t 2.로그인 \t 3.관리자 \t 4.종료     \t|");
-			System.out.println("|\t\t\t\t\t\t\t\t\t|");
-			System.out.println(" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ ");
+			
+           System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+           System.out.printf("│%-97s│\n","");
+           System.out.printf("│%20s %18s %18s %18s %16s\n","1.회원가입","2.로그인","3.관리자","4.종료","│");
+           System.out.printf("│%-97s│\n","");
+           System.out.println("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
 
-			System.out.print("[입력] >> ");
+		
+
+           System.out.printf("%55s","원하시는 메뉴번호를 입력하세요 ☞ ");
 
 			int input = 0;
 
