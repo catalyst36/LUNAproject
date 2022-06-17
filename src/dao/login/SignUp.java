@@ -25,36 +25,37 @@ public void insertMember(){
 			
 			
 			System.out.println("\n\n\n\n\n\n\n\n\n\n");
-			System.out.println("┌──────┤ 회원가입 ├──────┐");
-			System.out.println("│      └───────┘ ");
-			System.out.println("│       [가입정보입력]      │");
-			System.out.println("└───────────────────────┘");
-			System.out.println("\n\n\n\n\n");
-			System.out.print("[아이디] >> ");
+	        System.out.println(" ┌───────────────────────────────────────────────────────────────────┐");
+	        System.out.println(" │\t\t\t\t\t\t\t\t\t│");
+	        System.out.println(" │\t\t             회원가입을 진행합니다.               \t\t│");
+	        System.out.println(" │\t\t           아래의 가입정보를 기입하세요.                \t│");
+	        System.out.println(" │\t\t\t\t\t\t\t\t\t│");
+	        System.out.println(" └───────────────────────────────────────────────────────────────────┘");
+	        System.out.print("\t\t\t       [아이디] ☞  ");
 			String mem_id = BufferUtil.readLine();
 			System.out.println();
-			System.out.print("[비밀번호] >> ");
+			System.out.print("\t\t\t       [비밀번호] ☞  ");
 			String mem_pw = BufferUtil.readLine();
 			System.out.println();
-			System.out.print("[이름] >> ");
+			System.out.print("\t\t\t       [이름] ☞  ");
 			String mem_name = BufferUtil.readLine();
 			System.out.println();
-			System.out.print("[생년월일] >> ");
+			System.out.print("\t\t\t       [생년월일] ☞  ");
 			String mem_bir = BufferUtil.readLine();
 			System.out.println();
-			System.out.print("[전화번호] >> ");
+			System.out.print("\t\t\t       [전화번호] ☞  ");
 			String mem_ph = BufferUtil.readLine();
 			System.out.println();
-			System.out.print("[이메일] >> ");
+			System.out.print("\t\t\t       [이메일] ☞  ");
 			String mem_email = BufferUtil.readLine();
 			System.out.println();
-			System.out.print("[주소] >> ");
+			System.out.print("\t\t\t       [주소] ☞  ");
 			String mem_add1 = BufferUtil.readLine();
 			System.out.println();
-			System.out.print("[상세주소] >> ");
+			System.out.print("\t\t\t       [상세주소] ☞  ");
 			String mem_add2 = BufferUtil.readLine();
 			System.out.println();
-			System.out.print("[충전금액] >> ");
+			System.out.print("\t\t\t       [충전금액] ☞  ");
 			int mem_cash = BufferUtil.nextInt();
 			
 			
