@@ -62,9 +62,9 @@ public class LoginDAO {
 						boolean run = true;
 						while(run) {
 							System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-						System.out.printf("%55s","비밀번호가 틀렸습니다");
-						System.out.printf("%53s","새 비밀번호를 만드시겠습니까?");
-						System.out.printf("%50s %5s","1.예","2.아니오");
+						System.out.printf("%55s\n","비밀번호가 틀렸습니다");
+						System.out.printf("%53s\n","새 비밀번호를 만드시겠습니까?");
+						System.out.printf("%50s %5s\n","1.예","2.아니오");
 				        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 						System.out.printf("%55s","입력 ☞ ");
 						int select = BufferUtil.nextInt();
@@ -99,8 +99,8 @@ public class LoginDAO {
 			if(missIdCount==rowCount) {
 				
 				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-			System.out.printf("%55s","아이디가 존재하지 않습니다");
-			System.out.printf("%53s","회원가입을 진행해주십시오");
+			System.out.printf("%55s\n","아이디가 존재하지 않습니다");
+			System.out.printf("%53s\n","회원가입을 진행해주십시오");
 	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 	        
 			}
@@ -165,9 +165,9 @@ public class LoginDAO {
 				
 				
 			System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-			System.out.printf("%55s","회원번호가 일치합니다");
-			System.out.printf("%53s","임시로 비밀번호를 생성하시겠습니까?");
-			System.out.printf("%50s %5s","1.예","2.아니오");
+			System.out.printf("%55s\n","회원번호가 일치합니다");
+			System.out.printf("%53s\n","임시로 비밀번호를 생성하시겠습니까?");
+			System.out.printf("%50s %5s\n","1.예","2.아니오");
 	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 				
 			System.out.printf("%55s","입력 ☞ ");

@@ -10,9 +10,9 @@ import util.PrintUtil;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-
+		PrintUtil.print();
 		while (true) {
-		   PrintUtil.print();
+		   
 		   System.out.printf("%s\n","[루나문고]");
            System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
            System.out.printf("%20s %18s %18s %18s\n","1.회원가입","2.로그인","3.관리자","4.종료");
