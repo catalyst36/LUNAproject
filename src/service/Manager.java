@@ -27,10 +27,9 @@ public class Manager {
 		
 		while(true){
 			System.out.printf("\n\n\n\n\n\n");
-		    System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-			System.out.printf("%20s", "ID : ");
+			System.out.printf("%55s","관리자 ID ☞  ");
 			String id = BufferUtil.readLine();
-			System.out.printf("%20s","PW : ");	          
+			System.out.printf("%55s","관리자 PW ☞  ");
 			String pw = BufferUtil.readLine();
 
 			System.out.println();
