@@ -73,8 +73,6 @@ public class MyPageDAO {
 		         System.out.printf("%35s %-5s %5s %-35s %-15s\n","ㆍ마일리지  : ",mil, "||", "ㆍ보유캐시 : ",cash);
 		         System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 				System.out.println();
-				String a=BufferUtil.readLine();
-				
 				}
 			if(id==null){                       //id입력 잘못했을때!!
 				System.out.println();
@@ -361,20 +359,19 @@ public class MyPageDAO {
 			while (rs.next()) {
 				int cash = rs.getInt("mem_cash");
 				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-				System.out.printf("%50s %20","현재 보유 캐쉬 :",cash);
+				System.out.printf("%50s %6d\n","현재 보유 캐쉬 :",cash);
 				System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
 			}
 			 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 			System.out.printf("%50s","캐쉬를 충전하시겠습니까?");
-			System.out.printf("%50s %50","1.예","2.아니오");
+			System.out.printf("%6s %6s\n","1.예","2.아니오");
 			System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
 			  System.out.printf("%55s","입력 ☞ ");
 			int put = BufferUtil.nextInt();
 
 			if (put == 1) {
 				
-				  System.out.printf("%55s","충전할 금액 ☞ ");
-				System.out.printf("%50s","충전할 금액을 입력하세요");
+				System.out.printf("%50s","충전할 금액을 입력하세요 ☞ ");
 				int charge = BufferUtil.nextInt();
 
 				System.out.println();
@@ -392,41 +389,39 @@ public class MyPageDAO {
 					tcash=rs.getInt("mem_cash");
 					pw=rs.getString("mem_pw");
 				}
-					if(pw.equals(getpw)){
+				if(pw.equals(getpw)){
 				
 				tcash=tcash+charge;
-
-				String cashSql = "update member" + " set mem_cash= ?"
-						+ " where mem_id=?" + " and mem_pw=?";
-				
-				
-				pstmt = conn.prepareStatement(cashSql);
 	
+				String cashSql = "update member" + " set mem_cash= ?"
+							+ " where mem_id=?" + " and mem_pw=?";
+					
+					
+				pstmt = conn.prepareStatement(cashSql);
+		
 				pstmt.setInt(1, tcash);
 				pstmt.setString(2, getid);
 				pstmt.setString(3, getpw);
-				
-
+					
+	
 				pstmt.executeUpdate();
 				int rs1 = pstmt.executeUpdate();
-
+	
 				String sql2 = "select mem_name,mem_cash" + " from member"
-						+ " where mem_id =?";
+							+ " where mem_id =?";
 				stmt = conn.createStatement();
-
+	
 				pstmt = conn.prepareStatement(sql2);
-
+	
 				pstmt.setString(1, getid);
 				rs = pstmt.executeQuery();
-
+	
 				while (rs.next()) {
 					int cash = rs.getInt("mem_cash");
-					 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+					System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 					System.out.printf("%50s \n","충전되었습니다.");
-					System.out.printf("%50s %50s\n","현재 보유 캐쉬 :",cash);
+					System.out.printf("%50s %6d\n","현재 보유 캐쉬 :",cash);
 					System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
-
-					String a=BufferUtil.readLine();
 				}
 			}else{
 				 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
