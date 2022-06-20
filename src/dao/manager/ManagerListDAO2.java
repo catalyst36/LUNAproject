@@ -27,9 +27,9 @@ public class ManagerListDAO2 {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
-			
-			System.out.println("책코드\t\t책 이름\t\t판매가\t\t책 저자\t\t출판사\t\t책 수량\t\t장르\t\t판매수량");
-			System.out.println("====================================================================");
+			System.out.printf("\n %-5s %-53s %-5s %-15s %-15s %-3s %-9s %-6s\n"
+					,"책 코드", "제목", "가격", "저자", "출판사", "수량", "장르", "누적판매수");
+			System.out.printf("\n%100s\n","─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
 			while(rs.next()){
 				String book_id = SEQ.createSequenceKey(rs.getString("book_id"));
 				String book_name = rs.getString("book_name");
@@ -40,9 +40,10 @@ public class ManagerListDAO2 {
 				String book_genre = rs.getString("book_genre");
 				String book_qtysale = rs.getString("book_qtysale");
 
-				System.out.println(book_id + "\t\t" + book_name + "\t\t" + book_sale + "\t\t"
-					+ book_author + "\t\t" + book_pub + "\t\t" + book_qty + "\t\t" + book_genre  + "\t\t" +	book_qtysale);
-			}
+				  System.out.printf("\n %-5s %-53s %-5s %-15s %-15s %-3s %-9s %-6s", book_id, book_name, book_sale, book_author, book_pub, book_qty,
+						  book_genre, book_qtysale);
+
+			}				  System.out.println();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
