@@ -15,11 +15,12 @@ public class PageScreen {
 	 boolean b=true;
     try {
     	while(b){
+    		
+    		System.out.printf("\n\n\n\n");
            System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-           System.out.printf("%15s %15s %15s %15s %15s %9s \n","1.기본정보조회","2.비밀번호변경","3.포인트충전","4.회원탈퇴","5.도서환불","");
-           System.out.println("└─────────────────────────────────────────────────────────────────────────────────────────────────┘");
- 
-           System.out.printf("%55s","원하시는 메뉴번호를 입력하세요 (6.뒤로가기)☞ ");
+           System.out.printf("%20s %10s %10s %10s %10s %9s \n","1.기본정보조회","2.비밀번호변경","3.포인트충전","4.회원탈퇴","5.도서환불","6.뒤로가기");
+           System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────"); 
+           System.out.printf("%55s","원하시는 메뉴번호를 입력하세요 ☞ ");
     	    
     	    int input = BufferUtil.nextInt();
     	   
@@ -75,11 +76,11 @@ public class PageScreen {
 				}else {
 					break;
 				}
-    	    	
     	    	break;
-    	    	case 6:
-    	    	return; 
+    	    case 6 :
+    	    	return;
     	    	}
+    	
     		}
     	}catch(Exception e){
             e.printStackTrace();

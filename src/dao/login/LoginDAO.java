@@ -61,12 +61,12 @@ public class LoginDAO {
 						
 						boolean run = true;
 						while(run) {
-						System.out.println(" ---------------------- ");
-						System.out.println("|    비밀번호가 틀렸습니다    |");
-						System.out.println("| 새 비밀번호를 만드시겠습니까? |");
-						System.out.println("|    1. 예   2. 아니오    |");
-						System.out.println(" ---------------------- ");
-						System.out.print("[선택] >> ");
+							System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+						System.out.printf("%55s","비밀번호가 틀렸습니다");
+						System.out.printf("%53s","새 비밀번호를 만드시겠습니까?");
+						System.out.printf("%50s %5s","1.예","2.아니오");
+				        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+						System.out.printf("%55s","입력 ☞ ");
 						int select = BufferUtil.nextInt();
 						
 						switch(select) {
@@ -97,10 +97,12 @@ public class LoginDAO {
 			}
 			
 			if(missIdCount==rowCount) {
-				System.out.println(" -------------------- ");
-				System.out.println("| 아이디가 존재하지 않습니다 |");
-				System.out.println("|  회원가입을 진행해주십시오 |");
-				System.out.println(" -------------------- ");
+				
+				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+			System.out.printf("%55s","아이디가 존재하지 않습니다");
+			System.out.printf("%53s","회원가입을 진행해주십시오");
+	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+	        
 			}
 			
 		}catch(SQLException e) {
@@ -160,13 +162,15 @@ public class LoginDAO {
 			
 			boolean run = true;
 			while(run) {
-			System.out.println(" -------------------------- ");
-			System.out.println("|      회원정보가 일치합니다      |");
-			System.out.println("| 임시로 비밀번호를 생성하시겠습니까? |");
-			System.out.println("|     1. 예   2. 아니오       |");
-			System.out.println(" -------------------------- ");
-			
-			System.out.println("[선택] >> ");
+				
+				
+			System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+			System.out.printf("%55s","회원번호가 일치합니다");
+			System.out.printf("%53s","임시로 비밀번호를 생성하시겠습니까?");
+			System.out.printf("%50s %5s","1.예","2.아니오");
+	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+				
+			System.out.printf("%55s","입력 ☞ ");
 			int select = BufferUtil.nextInt();
 			
 			switch(select) {
