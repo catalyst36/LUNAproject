@@ -8,16 +8,10 @@ import dao.manager.ManagerListDAO1;
 import dao.manager.ManagerListDAO2;
 import dao.manager.ManagerListDAO3;
 import util.BufferUtil;
+import util.PrintUtil;
 import vo.EmployeeVO;
 
 public class Manager {
-	
-	public static void main(String[] args) throws Exception {
-		Manager manager = new Manager();
-
-		manager.login();  // 관리자 페이지 접속하자마자 로그인 메소드 호출
-		
-	}
 	
 	public void login() throws Exception{ //  로그인 메소드
 		Manager manager = new Manager();
@@ -42,6 +36,7 @@ public class Manager {
 			          System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 
 					System.out.println();
+					PrintUtil.print();
 					manager.exe();
 					break;
 			} else{
@@ -83,30 +78,40 @@ public class Manager {
 		
 		switch(num){
 		case 1:
+			PrintUtil.print();
 			manager.bookStock();
+			break;
 		case 2:
+			PrintUtil.print();
 			manager.memberList();
+			break;
 		case 3:
+			PrintUtil.print();
 			manager.bookList();
+			break;
 			case 4:
+			PrintUtil.print();
 			manager.logout();
+			break;
 		}
 	}
 	
 	public void bookStock() throws Exception{  // 책 입고 메소드
 		BookStockDAO stock = new BookStockDAO();
+		PrintUtil.print();
 		stock.insertBook();
 	}
 	
 	public void memberList() throws Exception{ // 회원 목록 조회 메소드
 		ManagerListDAO1 memList = new ManagerListDAO1();
+		PrintUtil.print();
 		memList.selectMember();
 	}
 	
 	public void bookList() throws Exception{ // 도서 목록 조회 메소드
 		Manager manager = new Manager();
 		ManagerListDAO2 bookList = new ManagerListDAO2();
-		
+		PrintUtil.print();
 		bookList.bookSelect();
 		System.out.printf("\n\n\n\n\n\n");
         System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
@@ -118,8 +123,10 @@ public class Manager {
 		
 		if (num == 1){
 			ManagerListDAO3 bookList2 = new ManagerListDAO3();
+			PrintUtil.print();
 			bookList2.checkStock();
 		}else{
+			PrintUtil.print();
 			manager.exe(); // 로그인 한 이후의 관리페이지로 이동
 		}
 		

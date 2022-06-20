@@ -6,6 +6,7 @@ import dao.mypage.Member;
 import dao.mypage.MyPageDAO;
 import dao.mypage.RefundData;
 import util.BufferUtil;
+import util.PrintUtil;
 
 public class PageScreen {
 	MyPageDAO mp = new MyPageDAO(); 
@@ -25,20 +26,23 @@ public class PageScreen {
     	    
     	    switch(input) {
     	    case 1:
+    	    	PrintUtil.print();
     	    	mp.infoView();
     	    	break;
     	    case 2:
-    	    	
+    	    	PrintUtil.print();
     	    	mp.pwChange();
     	    	break;
     	    case 3:
-
+    	    	PrintUtil.print();
     	    	mp.cashCharge();
     	    	break;
     	    case 4:
+    	    	PrintUtil.print();
     	    	mp.delMem();
-    	    	break;
+    	    	return;
     	    case 5:
+    	    	PrintUtil.print();
     	    	Member m = new Member();
     	    	ArrayList<RefundData> refundList = m.viewPurchasedBook(mem_id);
     	    	
@@ -54,12 +58,24 @@ public class PageScreen {
     	    	}
     	    	System.out.print("환불할 번호를 입력하세요 : ");
     	    	int listNum = BufferUtil.nextInt() - 1;
-    	    	int result = m.refund(refundList.get(listNum));
-    	    	if(result == 0) {
-    	    		System.out.println("환불 실패!");
-    	    	}else {
-    	    		System.out.println("환불 성공!");
-    	    	}
+    	    	String name = refundList.get(listNum).getRefund_bookName();
+    	    	System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
+				System.out.printf("%54s을/를 환불하시겠습니까?\n",name);
+				System.out.printf("%40s %15s\n","1.예","2.아니오");
+				System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
+				System.out.printf("%53s","입력 ☞ ");
+				int put = BufferUtil.nextInt();
+				if(put == 1) {
+					int result = m.refund(refundList.get(listNum));
+	    	    	if(result == 0) {
+	    	    		System.out.println("환불 실패!");
+	    	    	}else {
+	    	    		System.out.println("환불 성공!");
+	    	    	}
+				}else {
+					break;
+				}
+    	    	
     	    	break;
     	    	case 6:
     	    	return; 

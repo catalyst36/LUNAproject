@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dao.booklist.CreateBook;
 import vo.BookVO;
 import util.BufferUtil;
+import util.PrintUtil;
 
 public class MainMenu {
    
@@ -31,20 +32,24 @@ public class MainMenu {
             	CreateBook booklist = new CreateBook();
             	ArrayList<BookVO> list = booklist.createInstance();
             	BookListService bookservice = new BookListService();
+            	PrintUtil.print();
             	bookservice.viewBookList(cartNumber, mem_id, list);
             	break;
             }
             case 2: {
                CartService cart = new CartService();
+               PrintUtil.print();
                cart.cartView(cartNumber, mem_id);
                break;
             }
             case 3: {
                PageScreen page = new PageScreen();
+               PrintUtil.print();
                page.pagescreen(mem_id);
                break;
             }
             case 4: {
+            	System.out.println("로그아웃 되었습니다.");
             	return;
             }
            }

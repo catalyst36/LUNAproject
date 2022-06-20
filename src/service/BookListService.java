@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import dao.booklist.BookList;
 import dao.cart.CartDAO; 
 import util.BufferUtil;
+import util.PrintUtil;
 import util.SEQ;
 import vo.BookVO;
 
@@ -28,12 +29,12 @@ public class BookListService {
 		
 		switch(select1) {
 		case 1:
-			
+			PrintUtil.print();
 			bl.getWholeBookList(list);
 			break;
 			
 		case 2:
-			
+			PrintUtil.print();
 			System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 	        System.out.printf("%25s %23s %23s\n","1.제목검색","2.장르검색","3.저자검색");
 	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
@@ -43,14 +44,17 @@ public class BookListService {
 			switch(select2) {
 			
 			case 1:
+				PrintUtil.print();
 				bl.searchBookName(list);
 				break;
 			
 			case 2:
+				PrintUtil.print();
 				bl.searchBookGenre(list);
 				break;
 			
 			case 3:
+				PrintUtil.print();
 				bl.searchBookAuthor(list);
 				break;
 				

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import dao.cart.CartDAO;
 import util.BufferUtil;
+import util.PrintUtil;
 import vo.CartVO;
 
 public class CartService {
@@ -24,6 +25,7 @@ public class CartService {
 	        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 	        System.out.printf("%55s","원하시는 메뉴번호를 입력하세요 ☞ ");
 			input = BufferUtil.nextInt();
+			
 			System.out.println();
 			if(input == 1) {
 				if(list.isEmpty()) {
@@ -39,10 +41,12 @@ public class CartService {
 		        System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 		        System.out.printf("%55s","삭제할 번호를 입력하세요 ☞ ");
 				int select = BufferUtil.nextInt();
+				PrintUtil.print();
 				System.out.println();
 				cartDao.removeCart(select, mem_id);
 			}
 			else
+				PrintUtil.print();
 				return;
 		}
 	}
