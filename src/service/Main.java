@@ -12,12 +12,8 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 
 		while (true) {
-<<<<<<< HEAD
 		   PrintUtil.print();
 		   System.out.printf("%s\n","[루나문고]");
-=======
-
->>>>>>> branch 'develop' of https://github.com/catalyst36/LUNAproject.git
            System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
            System.out.printf("%20s %18s %18s %18s\n","1.회원가입","2.로그인","3.관리자","4.종료");
            System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
