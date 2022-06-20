@@ -65,12 +65,12 @@ public class MyPageDAO {
 				
 				
 				 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-		         System.out.printf("%50s %25s\n","ㆍID : ",id);
-		         System.out.printf("%50s %25s\n","ㆍ등급 : ",grade);
-		         System.out.printf("%50s %25s\n","ㆍ생일  : ",bir);
-		         System.out.printf("%50s %25s\n","ㆍ이메일  : ",em);
-		         System.out.printf("%50s %25s\n","ㆍ주소  : ",add1+add2);
-		         System.out.printf("%35s %5s %5s %35s %5s\n","ㆍ마일리지  : ",mil, "||", "ㆍ보유캐시 : ",cash);
+		         System.out.printf("%50s %-15s\n","ㆍID : ",id);
+		         System.out.printf("%50s %-15s\n","ㆍ등급 : ",grade);
+		         System.out.printf("%50s %-25s\n","ㆍ생일  : ",bir);
+		         System.out.printf("%50s %-25s\n","ㆍ이메일  : ",em);
+		         System.out.printf("%50s %-25s\n","ㆍ주소  : ",add1+add2);
+		         System.out.printf("%35s %-5s %5s %-35s %-15s\n","ㆍ마일리지  : ",mil, "||", "ㆍ보유캐시 : ",cash);
 		         System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 				System.out.println();
 				String a=BufferUtil.readLine();
