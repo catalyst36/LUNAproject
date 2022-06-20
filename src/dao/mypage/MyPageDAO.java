@@ -65,19 +65,19 @@ public class MyPageDAO {
 				
 				
 				 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-		         System.out.printf("%20s %25s\n","ㆍID : ",id);
-		         System.out.printf("%20s %25s\n","ㆍ등급 : ",grade);
-		         System.out.printf("%20s %25s\n","ㆍ생일  : ",bir);
-		         System.out.printf("%20s %25s\n","ㆍ이메일  : ",em);
-		         System.out.printf("%20s %25s\n","ㆍ주소  : ",add1+add2);
-		         System.out.printf("%20s %25s %20s %25s %20s\n","ㆍ마일리지  : ",mil, "||", "ㆍ보유캐시 : ",cash);
+		         System.out.printf("%50s %-15s\n","ㆍID : ",id);
+		         System.out.printf("%50s %-15s\n","ㆍ등급 : ",grade);
+		         System.out.printf("%50s %-25s\n","ㆍ생일  : ",bir);
+		         System.out.printf("%50s %-25s\n","ㆍ이메일  : ",em);
+		         System.out.printf("%50s %-25s\n","ㆍ주소  : ",add1+add2);
+		         System.out.printf("%35s %-5s %5s %-35s %-15s\n","ㆍ마일리지  : ",mil, "||", "ㆍ보유캐시 : ",cash);
 		         System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 				System.out.println();
 				}
 			if(id==null){                       //id입력 잘못했을때!!
 				System.out.println();
 				 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-				System.out.printf("%53s \n","※입력하신 ID는 없는ID입니다.※");
+				System.out.printf("%54s \n","※입력하신 ID는 없는ID입니다.※");
 			     System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
 				String a=BufferUtil.readLine();
 				return;
@@ -119,7 +119,7 @@ public class MyPageDAO {
 		try {
 			conn = Connect.getConnection();
 
-			System.out.printf("%50s","회원님의 id를 입력해주세요 ☞ ");
+			System.out.printf("%53s","회원님의 id를 입력해주세요 ☞ ");
 			String getId = BufferUtil.readLine();
 
 			String sql = "select mem_id,mem_name,mem_bir" + " from member"
@@ -140,22 +140,23 @@ public class MyPageDAO {
 			}
 			if(id.equals(getId)){
 				 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-			System.out.printf("%50s","회원님의 정보가 아래와 같습니까?");
-			System.out.printf("%30s %30s\n","ID : ",id); 
-			System.out.printf("%20s %30s \n ","이름 : ",name);
-			System.out.printf("%20s %30s \n","생일 : ",bir);
+			System.out.printf("%54s\n","회원님의 정보가 아래와 같습니까?");
+			System.out.printf("%40s %15s\n","ID : ",id); 
+			System.out.printf("%40s %15s\n ","이름 : ",name);
+			System.out.printf("%40s %30s\n","생일 : ",bir);
 			System.out.println();
-			System.out.printf("%45s %45s","1.예","2.아니오");
+			System.out.printf("%40s %15s\n","1.예","2.아니오");
 		     System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-		     System.out.printf("%55s","입력 ☞ ");
+		     System.out.printf("%50s","입력 ☞ ");
 
 			int input = BufferUtil.nextInt();
 
 			if (input == 1) {
 				System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-				System.out.printf("%54s","회원 탈퇴를 진행하시겠습니까?");
+				System.out.printf("%54s\n","회원 탈퇴를 진행하시겠습니까?");
+				System.out.printf("%40s %15s\n","1.예","2.아니오");
 				System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
-				  System.out.printf("%55s","입력 ☞ ");
+				  System.out.printf("%53s","입력 ☞ ");
 				  int put = BufferUtil.nextInt();
 
 				if (put == 1) {
@@ -184,14 +185,14 @@ public class MyPageDAO {
 						pstmt.executeUpdate();
 						int rs1 = pstmt.executeUpdate();
 						 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-						System.out.printf("%49s","회원탈퇴성공" + rs1);
+						System.out.printf("%52s\n","회원탈퇴성공" + rs1);
 						System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
 
 						String a=BufferUtil.readLine();
 					}else{
 						 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
 						System.out.printf("%45\n","비밀번호를 잘못 입력하셨습니다.");
-						System.out.printf("%50s","다시 시도해주세요");
+						System.out.printf("%50s\n","다시 시도해주세요");
 						System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
 
 						String a=BufferUtil.readLine();
@@ -209,7 +210,7 @@ public class MyPageDAO {
 			}
 			}else {
 				 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-				System.out.printf("%50s","입력하신 계정이 없습니다.");       //id또는 이름 잘못입력했을때
+				System.out.printf("%50s\n","입력하신 계정이 없습니다.");       //id또는 이름 잘못입력했을때
 				System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
 
 				String a=BufferUtil.readLine();
@@ -250,9 +251,9 @@ public class MyPageDAO {
 		try {
 			conn = Connect.getConnection();
 
-			  System.out.printf("%55s","ID 입력 ☞ ");
+			  System.out.printf("%52s","ID 입력 ☞ ");
 			getid = BufferUtil.readLine(); // id를 입력받아서 인증
-			  System.out.printf("%55s","이름 입력 ☞ ");
+			  System.out.printf("%52s","이름 입력 ☞ ");
 			getname = BufferUtil.readLine(); // 이름도 인증
 
 			String sql = "select mem_id, mem_name" + " from member"
@@ -275,9 +276,9 @@ public class MyPageDAO {
 				id=rs1.getString("mem_id");
 				name=rs1.getString("mem_name");
 				 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-				System.out.printf("%50s","비밀번호 변경합니다.\n");
+				System.out.printf("%53s","비밀번호 변경합니다.\n");
 				System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");	
-				  System.out.printf("%55s","비밀번호 입력 ☞ ");
+				  System.out.printf("%53s","비밀번호 입력 ☞ ");
 
 				String pwCh = BufferUtil.readLine();
 
@@ -295,7 +296,7 @@ public class MyPageDAO {
 
 				if (rs2 != 0) {
 					 System.out.printf("┌%97s┐\n","─────────────────────────────────────────────────────────────────────────────────────────────────");
-					System.out.printf("%50s","비밀번호가 변경되었습니다.");
+					System.out.printf("%53s\n","비밀번호가 변경되었습니다.");
 					System.out.printf("└%97s┘\n","─────────────────────────────────────────────────────────────────────────────────────────────────");				
 
 					String a=BufferUtil.readLine();
